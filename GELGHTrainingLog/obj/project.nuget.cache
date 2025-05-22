@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "hBxpu74GvNI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\admin\\Documents\\GitHub\\RhinoLog\\GELGHTrainingLog\\GELGHTrainingLog.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\grasshopper\\8.0.23304.9001\\grasshopper.8.0.23304.9001.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\rhinocommon\\8.0.23304.9001\\rhinocommon.8.0.23304.9001.nupkg.sha512"
+  ],
+  "logs": []
+}

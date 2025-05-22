@@ -1,0 +1,15 @@
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\bin\Release\net8.0\win-x64\GELTrainingSetup.exe
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\bin\Release\net8.0\win-x64\GELTrainingSetup.deps.json
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\bin\Release\net8.0\win-x64\GELTrainingSetup.runtimeconfig.json
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\bin\Release\net8.0\win-x64\GELTrainingSetup.dll
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\bin\Release\net8.0\win-x64\GELTrainingSetup.pdb
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.AssemblyInfoInputs.cache
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.AssemblyInfo.cs
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.sourcelink.json
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.dll
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\refint\GELTrainingSetup.dll
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.pdb
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\GELTrainingSetup.genruntimeconfig.cache
+C:\Users\admin\Documents\GitHub\RhinoLog\GELTrainingSetup\obj\Release\net8.0\win-x64\ref\GELTrainingSetup.dll

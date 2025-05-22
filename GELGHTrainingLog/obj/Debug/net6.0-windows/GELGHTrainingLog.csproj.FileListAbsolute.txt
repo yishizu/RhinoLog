@@ -1,0 +1,15 @@
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\bin\Debug\net6.0-windows\GELGHTrainingLog.deps.json
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\bin\Debug\net6.0-windows\GELGHTrainingLog.runtimeconfig.json
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\bin\Debug\net6.0-windows\GELGHTrainingLog.gha
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\bin\Debug\net6.0-windows\GELGHTrainingLog.pdb
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.csproj.AssemblyReference.cache
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.AssemblyInfoInputs.cache
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.AssemblyInfo.cs
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.sourcelink.json
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.gha
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\refint\GELGHTrainingLog.gha
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.pdb
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\GELGHTrainingLog.genruntimeconfig.cache
+C:\Users\admin\Documents\GitHub\RhinoLog\GELGHTrainingLog\obj\Debug\net6.0-windows\ref\GELGHTrainingLog.gha

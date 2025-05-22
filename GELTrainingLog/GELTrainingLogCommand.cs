@@ -8,6 +8,7 @@ using Rhino.Input.Custom;
 
 namespace GELTrainingLog
 {
+    
     public class GELTrainingLogCommand : Command
     {
         public GELTrainingLogCommand()
