@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Description of GELGHTrainingLog")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+a813e3c9498ac1c470741028797b0c52406bca3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+103a43185f8d46761aec527559fbdefd78d7948f")]
 [assembly: System.Reflection.AssemblyProductAttribute("GELGHTrainingLog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GELGHTrainingLog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
