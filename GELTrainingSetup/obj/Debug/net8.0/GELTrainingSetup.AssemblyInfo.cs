@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GELTrainingSetup")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+103a43185f8d46761aec527559fbdefd78d7948f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5c54431c80b73d97b8be660c2cfe5a6426a41f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("GELTrainingSetup")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GELTrainingSetup")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

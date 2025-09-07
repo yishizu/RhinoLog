@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -41,8 +42,8 @@ namespace GELTrainingLog
             public string end_date { get; set; }
         }
         
-        private DateTime? _periodStart = new DateTime(2025, 5, 19);
-        private DateTime? _periodEnd = new DateTime(2025, 5, 30);
+        private DateTime? _periodStart = new DateTime(2025, 9, 8);
+        private DateTime? _periodEnd = new DateTime(2025, 9, 12);
 
         private static string _userID;
         private static  string _logFolder;
@@ -57,7 +58,10 @@ namespace GELTrainingLog
         
         private bool _isOpening = false;
         private bool _firstViewInitialized = false;
-        
+        private bool _logWriterRunning = true;
+        private readonly List<string> _openedDocumentNames = new();
+        private DateTime _sessionStartTime;
+        private DateTime _sessionEndTime;
         public GELTrainingLogPlugin()
         {
             Instance = this;
@@ -87,9 +91,8 @@ namespace GELTrainingLog
 
         protected override LoadReturnCode OnLoad(ref string errorMessage)
         {
+            _sessionStartTime = DateTime.Now;
             _userID = Environment.UserName;
-
-            // ここで明示的に RH フォルダを入れる
             _logFolder = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
                 "GEL", "RH", _userID);
@@ -103,37 +106,25 @@ namespace GELTrainingLog
             
             RhinoApp.WriteLine("GEL Rhino Operation Logger Loaded");
 
-         
-        
-         
-
             var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             var sessionFolder = Path.Combine(_logFolder,  timestamp);
             Directory.CreateDirectory(sessionFolder);
+            
 
-            string documentName = "Untitled";
-            var doc = RhinoDoc.ActiveDoc;
-            if (doc != null && !string.IsNullOrEmpty(doc.Name))
-            {
-                documentName = Path.GetFileNameWithoutExtension(doc.Name);
-            }
+            _sessionLogFile = Path.Combine(sessionFolder, $"{_userID}_Log.csv");
+            _sessionMetaFile = Path.Combine(sessionFolder, $"{_userID}_Meta.json");
 
-            _sessionLogFile = Path.Combine(sessionFolder, $"{_userID}_{documentName}_Log.csv");
-            _sessionMetaFile = Path.Combine(sessionFolder, $"{_userID}_{documentName}_Meta.json");
-
-            File.WriteAllText(_sessionLogFile, "Timestamp,UserID,Action,Detail\n");
+            File.WriteAllText(_sessionLogFile, "Timestamp,UserID,Action,Detail\n", Encoding.UTF8);
 
             var meta = new
             {
                 UserID = _userID,
-                SessionTimestamp = timestamp,
-                DocumentName = documentName,
-                RhinoVersion = RhinoApp.Version,
-                OS = Environment.OSVersion.ToString(),
-                MachineName = Environment.MachineName
+                SessionStart = _sessionStartTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                SessionEnd = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                OpenedDocumentNames = _openedDocumentNames
             };
             File.WriteAllText(_sessionMetaFile, JsonSerializer.Serialize(meta, new JsonSerializerOptions { WriteIndented = true }));
-
+            Log("Session Started", "Rhino logging plugin initialized");
             RhinoDoc.AddRhinoObject += OnAddObject;
             RhinoDoc.DeleteRhinoObject += OnDeleteObject;
             Command.BeginCommand += OnCommandBegin;
@@ -185,6 +176,22 @@ namespace GELTrainingLog
 
         protected override void OnShutdown()
         {
+            Log("Session Ended", "Rhino is shutting down");
+            _logWriterRunning = false;
+            while (_logQueue.Count > 0)
+            {
+                Thread.Sleep(100); // 少しずつ待つ
+            }
+            var sessionMeta = new
+            {
+                UserID = _userID,
+                SessionStart = _sessionStartTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                SessionEnd = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                OpenedDocumentNames = _openedDocumentNames
+            };
+
+            File.WriteAllText(_sessionMetaFile, JsonSerializer.Serialize(sessionMeta, new JsonSerializerOptions { WriteIndented = true }));
+
             RhinoDoc.AddRhinoObject -= OnAddObject;
             RhinoDoc.DeleteRhinoObject -= OnDeleteObject;
             Command.BeginCommand -= OnCommandBegin;
@@ -262,24 +269,16 @@ namespace GELTrainingLog
             {
                 if (doc != null && !string.IsNullOrEmpty(doc.Path))
                 {
-                    SetLogFileFromDocName(doc);
-                    var documentName = Path.GetFileNameWithoutExtension(doc.Name);
-                    var sessionDir = Path.GetDirectoryName(_sessionLogFile);
-                    var newLogPath = Path.Combine(sessionDir, $"{_userID}_{documentName}_Log.csv");
-                    var newMetaPath = Path.Combine(sessionDir, $"{_userID}_{documentName}_Meta.json");
+                    //SetLogFileFromDocName(doc);
+                    var newPath = doc.Path;
+                    
+                    _openedDocumentNames.RemoveAll(name =>
+                        string.Equals(Path.GetFileNameWithoutExtension(name), Path.GetFileNameWithoutExtension(newPath), StringComparison.OrdinalIgnoreCase) == false
+                        && Path.GetExtension(name) == ".3dm");
 
-                    if (_sessionLogFile != newLogPath && File.Exists(_sessionLogFile))
+                    if (!_openedDocumentNames.Contains(newPath))
                     {
-                        File.Move(_sessionLogFile, newLogPath);
-                        _sessionLogFile = newLogPath;
-                        RhinoApp.WriteLine($"ログファイル名をリネームしました: {_sessionLogFile}");
-                    }
-
-                    if (_sessionMetaFile != newMetaPath && File.Exists(_sessionMetaFile))
-                    {
-                        File.Move(_sessionMetaFile, newMetaPath);
-                        _sessionMetaFile = newMetaPath;
-                        RhinoApp.WriteLine($"メタファイル名をリネームしました: {_sessionMetaFile}");
+                        _openedDocumentNames.Add(newPath);
                     }
 
                     var fileInfo = new FileInfo(doc.Path);
@@ -306,6 +305,18 @@ namespace GELTrainingLog
         private void OnBeginOpenDocument(object sender, DocumentOpenEventArgs e)
         {
             _isOpening = true;
+            if (string.IsNullOrEmpty(e.FileName))
+            {
+                Log("New Document", "User created a new blank document");
+                return;
+            }
+            if (!string.IsNullOrEmpty(e.FileName))
+            {
+                if (!_openedDocumentNames.Contains(Path.GetFileName(e.FileName))) // 重複防止（必要なら）
+                {
+                    _openedDocumentNames.Add(e.FileName);
+                }
+            }
             var fileInfo = new FileInfo(e.FileName);
             var created = fileInfo.CreationTime;
             var modified = fileInfo.LastWriteTime;
@@ -314,7 +325,7 @@ namespace GELTrainingLog
             Log("Document Opened", $"Path:{e.FileName}, Created:{created:yyyy-MM-dd HH:mm:ss}, Modified:{modified:yyyy-MM-dd HH:mm:ss}, FileSizeMB:{fileSizeMB:F2}");
 
             var doc = RhinoDoc.ActiveDoc;
-            SetLogFileFromDocName(doc);
+            //SetLogFileFromDocName(doc);
             int objectCount = 0, layerCount = 0, blockCount = 0;
             if (doc != null)
             {
@@ -364,47 +375,24 @@ namespace GELTrainingLog
         private void SaveMetaAtSave(RhinoDoc doc)
         {
             if (doc == null || string.IsNullOrEmpty(doc.Path)) return;
-
-            var fileInfo = new FileInfo(doc.Path);
-            var created = fileInfo.CreationTime;
-            var modified = fileInfo.LastWriteTime;
-            var fileSizeMB = fileInfo.Length / (1024.0 * 1024.0);
-
+            
             var meta = new
             {
-                UserID = Environment.UserName,
-                DocumentPath = doc.Path,
-                Created = created.ToString("yyyy-MM-dd HH:mm:ss"),
-                Modified = modified.ToString("yyyy-MM-dd HH:mm:ss"),
-                FileSizeMB = Math.Round(fileSizeMB, 2),
-                ObjectCount = doc.Objects.Count,
-                LayerCount = doc.Layers.Count,
-                BlockCount = doc.InstanceDefinitions.Count
+                UserID = _userID,
+                SessionStart = _sessionStartTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                SessionEnd = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                OpenedDocumentNames = _openedDocumentNames
             };
-
-            var sessionFolder = Path.GetDirectoryName(_sessionLogFile);
-            var metaPath = Path.Combine(sessionFolder, $"{_userID}_SaveMeta.json");
-            File.WriteAllText(metaPath, JsonSerializer.Serialize(meta, new JsonSerializerOptions { WriteIndented = true }));
+            
+            File.WriteAllText(_sessionMetaFile, JsonSerializer.Serialize(meta, new JsonSerializerOptions { WriteIndented = true }));
         }
-        private void SetLogFileFromDocName(RhinoDoc doc)
-        {
-            if (doc == null) return;
-
-            string docName = string.IsNullOrEmpty(doc.Name) ? "Untitled" : Path.GetFileNameWithoutExtension(doc.Name);
-            var folder = Path.GetDirectoryName(_sessionLogFile); // or use _sessionFolder
-            _sessionLogFile = Path.Combine(folder, $"{_userID}_{docName}_Log.csv");
-
-            if (!File.Exists(_sessionLogFile))
-            {
-                File.WriteAllText(_sessionLogFile, "Timestamp,UserID,Action,Detail\n");
-            }
-        }
-
+  
         private void StartLogWriter()
         {
+            _logWriterRunning = true;
             Task.Run((() =>
             {
-                while (true)
+                while (_logWriterRunning || _logQueue.Count > 0)
                 {
                     string logLine = null;
                     lock (_logLock)
@@ -419,7 +407,7 @@ namespace GELTrainingLog
                     {
                         try
                         {
-                            File.AppendAllText(_sessionLogFile, logLine);
+                            File.AppendAllText(_sessionLogFile, logLine, System.Text.Encoding.UTF8);
                         }
                         catch (Exception e)
                         {

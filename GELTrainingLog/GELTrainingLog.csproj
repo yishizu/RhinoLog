@@ -16,7 +16,7 @@
   
   <PropertyGroup>
     <!-- Specifies information for Assembly and Yak -->
-    <Version>1.0</Version>
+    <Version>0.1.2</Version>
     <Title>GELTrainingLog</Title>
     <Company>GELTrainingLog Authors</Company>
     <Description>Description of GELTrainingLog</Description>
