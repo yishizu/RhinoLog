@@ -12,12 +12,6 @@ namespace GELGHTrainingLog
 {
     public class GELGHLogAssemblyPriority : GH_AssemblyPriority
     {
-        private DateTime? _periodStart = new DateTime(2025, 9, 8);
-        private DateTime? _periodEnd = new DateTime(2025, 9, 12);
-        private string _sessionMetaFile;
-        private DateTime _sessionStartTime;
-        private readonly List<string> _openedFileNames = new();
-        
         private string _sessionFolder;
         private string _userID = Environment.UserName;
         private string _logFilePath;
@@ -33,7 +27,7 @@ namespace GELGHTrainingLog
         private bool isFirstLoad = true;
         private string _lastKnownPath = "";
         private DateTime _lastWriteTime = DateTime.MinValue;
-        
+        private bool _sessionInitialized = false;
         
         private Dictionary<Guid, double> _lastSliderValues = new();
         private Dictionary<Guid, double> _lastRecordedSliderValues = new();
@@ -58,6 +52,7 @@ namespace GELGHTrainingLog
         {
             if (isFirstLoad)
             {
+                //InitializeSession();
                 isFirstLoad = false;
                 
             }
@@ -72,13 +67,11 @@ namespace GELGHTrainingLog
         private void OnRhinoClosing(object sender, EventArgs e)
         {
             Log("SessionEnd", $"User: {_userID} (via RhinoApp.Closing)");
-            Grasshopper.Instances.DocumentServer.DocumentAdded -= OnDocumentAdded;
-            Grasshopper.Instances.DocumentServer.DocumentRemoved -= OnDocumentRemoved;
-            Rhino.RhinoApp.Closing -= OnRhinoClosing;
             CleanUpIfEmpty();
         }
         private void EnsureSessionInitialized()
         {
+            if (_sessionInitialized) return;
 
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -86,7 +79,8 @@ namespace GELGHTrainingLog
             Directory.CreateDirectory(_sessionFolder);
             _logFilePath = Path.Combine(_sessionFolder, $"{_userID}_GHLog.csv");
             File.WriteAllText(_logFilePath, "Timestamp,Action,Detail\n");
-        
+            _sessionInitialized = true;
+
             // 初回ログとしてセッションスタート記録
             Log("SessionStart", $"User: {_userID}");
         }
@@ -116,18 +110,21 @@ namespace GELGHTrainingLog
                 RhinoApp.WriteLine($"ログ削除時のエラー: {ex.Message}");
             }
         }
-
+        private void InitializeSession()
+        {
+            
+            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            _sessionFolder = Path.Combine(desktop, "GEL", "GH", _userID, timestamp);
+            Directory.CreateDirectory(_sessionFolder);
+            _logFilePath = Path.Combine(_sessionFolder, $"{_userID}_GHLog.csv");
+            File.WriteAllText(_logFilePath, "Timestamp,Action,Detail\n");
+            Log("SessionStart", $"User: {_userID}");
+        }
 
         private void Log(string action, string detail)
         {
             EnsureSessionInitialized(); 
-            var now = DateTime.Now;
-            // 期間が設定されている場合だけチェック
-            if (_periodStart.HasValue && _periodEnd.HasValue)
-            {
-                if (now < _periodStart.Value || now > _periodEnd.Value)
-                    return; // ログを記録しない
-            }
             string line = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss},{action},\"{detail}\"\n";
             File.AppendAllText(_logFilePath, line);
         }
