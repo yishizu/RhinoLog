@@ -186,7 +186,7 @@ namespace GELGHTrainingLog
           
             obj.ObjectChanged += (s, e) =>
             {
-                Log("ObjectChanged", $"{obj.Name}, {obj.GetType().Name}");
+                Log("ObjectChanged", $"{obj.Name},{e.Type.ToString()}");
             };
             obj.AttributesChanged += (s, e) =>
             {
