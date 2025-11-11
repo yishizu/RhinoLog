@@ -17,11 +17,11 @@ COMMAND_CLASSIFICATION = None
 def load_command_classification():
     global COMMAND_CLASSIFICATION
     try:
-        # Try multiple possible paths
+        # Try multiple possible paths (prioritize local server folder)
         possible_paths = [
-            os.path.join(os.path.dirname(__file__), '../log_data_analysis/00_data/command_classification/rhino_commands_actions_classified.json'),
-            '/home/rhinologs/rhino_commands_actions_classified.json',
-            'rhino_commands_actions_classified.json'
+            os.path.join(os.path.dirname(__file__), 'rhino_commands_actions_classified.json'),  # Same folder as server_v2.py
+            '/home/rhinologs/rhino_commands_actions_classified.json',  # Production server path
+            'rhino_commands_actions_classified.json'  # Current directory fallback
         ]
 
         for path in possible_paths:
@@ -825,6 +825,135 @@ def get_workflow_stats(username):
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+#  Action Groups API (10-minute intervals)
+@app.route('/api/action-groups/<username>', methods=['GET'])
+def get_action_groups(username):
+    """Get user's actions grouped into 10-minute intervals"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+
+        c.execute('''SELECT timestamp, action, detail, document_name FROM logs
+                     WHERE username = ?
+                     ORDER BY timestamp ASC''', (username,))
+        rows = c.fetchall()
+        conn.close()
+
+        if not rows:
+            return jsonify({'error': 'No logs found for user'}), 404
+
+        # Group actions into 10-minute intervals
+        groups = []
+        current_group = []
+        group_start_time = None
+        idle_threshold_minutes = 10
+
+        for timestamp_str, action, detail, document_name in rows:
+            try:
+                timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+            except:
+                continue
+
+            if group_start_time is None:
+                # Start first group
+                group_start_time = timestamp
+                current_group = [{
+                    'timestamp': timestamp_str,
+                    'action': action,
+                    'detail': detail,
+                    'document_name': document_name
+                }]
+            else:
+                # Check if within 10 minutes of group start
+                time_diff_minutes = (timestamp - group_start_time).total_seconds() / 60
+
+                if time_diff_minutes <= idle_threshold_minutes:
+                    # Add to current group
+                    current_group.append({
+                        'timestamp': timestamp_str,
+                        'action': action,
+                        'detail': detail,
+                        'document_name': document_name
+                    })
+                else:
+                    # Save current group and start new one
+                    if current_group:
+                        groups.append(analyze_action_group(current_group, group_start_time))
+
+                    group_start_time = timestamp
+                    current_group = [{
+                        'timestamp': timestamp_str,
+                        'action': action,
+                        'detail': detail,
+                        'document_name': document_name
+                    }]
+
+        # Don't forget last group
+        if current_group:
+            groups.append(analyze_action_group(current_group, group_start_time))
+
+        return jsonify({
+            'username': username,
+            'total_groups': len(groups),
+            'groups': groups
+        }), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+def analyze_action_group(group_actions, start_time):
+    """Analyze a single 10-minute action group"""
+    if not group_actions:
+        return None
+
+    # Calculate basic metrics
+    end_time = datetime.strptime(group_actions[-1]['timestamp'], '%Y-%m-%d %H:%M:%S')
+    duration_minutes = (end_time - start_time).total_seconds() / 60
+    total_actions = len(group_actions)
+
+    # Analyze workflow categories
+    workflow_counts = Counter()
+    detail_counts = Counter()
+
+    for action_dict in group_actions:
+        action = action_dict['action']
+        detail = action_dict.get('detail', '')
+
+        # Classify command
+        if action == 'Command Started' and detail:
+            command_name = detail.split(';')[0].strip()
+            workflow_cat, detail_cat = classify_command(command_name)
+
+            if workflow_cat:
+                workflow_counts[workflow_cat] += 1
+            if detail_cat:
+                detail_counts[detail_cat] += 1
+
+    # Get workflow category names
+    workflow_names = {}
+    if COMMAND_CLASSIFICATION:
+        wf_cats = COMMAND_CLASSIFICATION.get('workflow_categories', {})
+        for cat_key, cat_info in wf_cats.items():
+            workflow_names[cat_key] = cat_info.get('name_ja', cat_key)
+
+    # Determine dominant activity
+    dominant_workflow = None
+    if workflow_counts:
+        dominant_workflow = workflow_counts.most_common(1)[0][0]
+
+    return {
+        'start_time': start_time.strftime('%Y-%m-%d %H:%M:%S'),
+        'end_time': end_time.strftime('%Y-%m-%d %H:%M:%S'),
+        'duration_minutes': round(duration_minutes, 2),
+        'total_actions': total_actions,
+        'actions_per_minute': round(total_actions / max(duration_minutes, 0.1), 2),
+        'workflow_categories': dict(workflow_counts),
+        'workflow_category_names': workflow_names,
+        'detail_categories': dict(detail_counts),
+        'dominant_workflow': workflow_names.get(dominant_workflow, dominant_workflow) if dominant_workflow else 'Unknown',
+        'actions': group_actions
+    }
 
 # ヘルスチェック
 @app.route('/api/health', methods=['GET'])

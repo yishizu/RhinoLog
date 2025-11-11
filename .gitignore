@@ -45,11 +45,8 @@ logs/
 *.sqlite
 *.sqlite3
 
-# Data Analysis Folder (except command classification)
-log_data_analysis/*
-!log_data_analysis/00_data/
-!log_data_analysis/00_data/command_classification/
-!log_data_analysis/00_data/command_classification/rhino_commands_actions_classified.json
+# Data Analysis Folder (全て除外 - コマンド分類JSONはserverフォルダにコピー済み)
+log_data_analysis/
 
 # Temporary files
 *.tmp

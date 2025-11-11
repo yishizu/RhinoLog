@@ -144,6 +144,16 @@ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args
    - 直近100アクションのワークフローカテゴリ分布
    - ツールチップで各カテゴリの具体的なコマンド例を表示
 
+4. **Action Groups (10-Minute Intervals)** (棒グラフ)
+   - ユーザーのアクションを10分間隔でグループ化
+   - 各グループの総アクション数と時間を表示
+   - 主要なワークフローカテゴリを自動判定
+
+5. **Action Groups Timeline** (タイムライン表示)
+   - 各アクショングループの詳細を時系列で表示
+   - 開始・終了時刻、アクション数、ワークフロー分布
+   - カラーコード化されたワークフローカテゴリ
+
 ### 分類されるワークフローカテゴリ
 
 - **作成 (Creation)**: Line, Circle, Box などの基本ジオメトリ作成
@@ -168,6 +178,7 @@ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args
 | `GET /api/logs?username=<username>` | 特定ユーザーのアクティビティログを取得 |
 | `GET /api/logs/classified?username=<username>` | **新機能**: 分類済みログを取得（ワークフロー・詳細カテゴリ付き） |
 | `GET /api/stats/workflow/<username>` | **新機能**: ユーザーのワークフロー統計を取得 |
+| `GET /api/action-groups/<username>` | **新機能**: ユーザーのアクションを10分間隔でグループ化して取得 |
 | `GET /api/groups` | 学習グループ一覧を取得 |
 
 ## データ構造

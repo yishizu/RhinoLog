@@ -430,6 +430,16 @@
                     <h3>Workflow Timeline (Last 100 Actions)</h3>
                     <canvas id="workflowTimelineChart"></canvas>
                 </div>
+
+                <div class="chart-container full-width">
+                    <h3>Action Groups (10-Minute Intervals)</h3>
+                    <canvas id="actionGroupsChart"></canvas>
+                </div>
+
+                <div class="chart-container full-width">
+                    <h3>Action Groups Timeline</h3>
+                    <div id="actionGroupsTimeline" style="max-height: 400px; overflow-y: auto;"></div>
+                </div>
             </div>
         </div>
 
@@ -560,8 +570,12 @@
                 const workflowResponse = await fetch(`${SERVER_URL}/api/stats/workflow/${username}`);
                 const workflowStats = workflowResponse.ok ? await workflowResponse.json() : null;
 
+                // Fetch action groups
+                const actionGroupsResponse = await fetch(`${SERVER_URL}/api/action-groups/${username}`);
+                const actionGroupsData = actionGroupsResponse.ok ? await actionGroupsResponse.json() : null;
+
                 // Display dashboard
-                displayUserDashboard(fullUserData || userData, logs, workflowStats);
+                displayUserDashboard(fullUserData || userData, logs, workflowStats, actionGroupsData);
 
                 document.getElementById('usersList').classList.remove('active');
                 document.getElementById('dashboard').classList.add('active');
@@ -572,7 +586,7 @@
             }
         }
 
-        function displayUserDashboard(userData, logs, workflowStats) {
+        function displayUserDashboard(userData, logs, workflowStats, actionGroupsData) {
             // Display user info
             const userInfo = document.getElementById('userInfo');
             const level = userData.user_level || 1;
@@ -638,6 +652,7 @@
             createCADToolsChart(userData);
             createActivityChart(logs);
             createWorkflowCharts(workflowStats);
+            createActionGroupsCharts(actionGroupsData);
         }
 
         function createExperienceChart(rhinoExp, ghExp) {
@@ -1075,6 +1090,145 @@
                         }
                     }
                 }
+            });
+        }
+
+        function createActionGroupsCharts(actionGroupsData) {
+            if (!actionGroupsData || !actionGroupsData.groups || actionGroupsData.groups.length === 0) {
+                // Hide action groups charts if no data
+                document.getElementById('actionGroupsChart').parentElement.style.display = 'none';
+                document.getElementById('actionGroupsTimeline').parentElement.style.display = 'none';
+                return;
+            }
+
+            // Show action groups charts
+            document.getElementById('actionGroupsChart').parentElement.style.display = 'block';
+            document.getElementById('actionGroupsTimeline').parentElement.style.display = 'block';
+
+            createActionGroupsBarChart(actionGroupsData);
+            createActionGroupsTimeline(actionGroupsData);
+        }
+
+        function createActionGroupsBarChart(actionGroupsData) {
+            const ctx = document.getElementById('actionGroupsChart');
+
+            if (charts.actionGroupsChart) {
+                charts.actionGroupsChart.destroy();
+            }
+
+            const groups = actionGroupsData.groups;
+
+            // Create labels and data for each group
+            const labels = groups.map((group, idx) => `Group ${idx + 1}`);
+            const actionsData = groups.map(group => group.total_actions);
+            const durationData = groups.map(group => group.duration_minutes);
+
+            charts.actionGroupsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Actions',
+                        data: actionsData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Duration (min)',
+                        data: durationData,
+                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                        borderWidth: 2,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Total Actions'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Duration (minutes)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const group = groups[context.dataIndex];
+                                    return `Dominant: ${group.dominant_workflow}\nActions/min: ${group.actions_per_minute}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createActionGroupsTimeline(actionGroupsData) {
+            const timeline = document.getElementById('actionGroupsTimeline');
+            timeline.innerHTML = '';
+
+            const groups = actionGroupsData.groups;
+
+            groups.forEach((group, idx) => {
+                const groupDiv = document.createElement('div');
+                groupDiv.style.cssText = 'border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 8px; background: #f9f9f9;';
+
+                const workflowColors = {
+                    'creation': '#FF6B6B',
+                    'construction': '#4ECDC4',
+                    'extraction': '#45B7D1',
+                    'editing': '#FFA07A',
+                    'copy_paste': '#98D8C8',
+                    'organization': '#FFD93D',
+                    'visualization': '#6BCF7F',
+                    'analysis': '#A8DADC',
+                    'data_management': '#457B9D',
+                    'settings': '#E63946'
+                };
+
+                // Build workflow breakdown
+                let workflowHTML = '';
+                const workflows = group.workflow_categories || {};
+                const workflowNames = group.workflow_category_names || {};
+
+                for (const [key, count] of Object.entries(workflows)) {
+                    const name = workflowNames[key] || key;
+                    const color = workflowColors[key] || '#95A5A6';
+                    workflowHTML += `<span style="display: inline-block; margin-right: 10px; padding: 3px 8px; background: ${color}; color: white; border-radius: 4px; font-size: 12px;">${name}: ${count}</span>`;
+                }
+
+                groupDiv.innerHTML = `
+                    <h4 style="margin: 0 0 10px 0;">Group ${idx + 1} - ${group.dominant_workflow}</h4>
+                    <p style="margin: 5px 0; font-size: 14px; color: #666;">
+                        <strong>Time:</strong> ${group.start_time} ~ ${group.end_time} (${group.duration_minutes} min)
+                    </p>
+                    <p style="margin: 5px 0; font-size: 14px; color: #666;">
+                        <strong>Actions:</strong> ${group.total_actions} (${group.actions_per_minute} actions/min)
+                    </p>
+                    <div style="margin-top: 10px;">
+                        ${workflowHTML}
+                    </div>
+                `;
+
+                timeline.appendChild(groupDiv);
             });
         }
 
