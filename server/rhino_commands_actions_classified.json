@@ -1,0 +1,5959 @@
+{
+  "classification_info": {
+    "description": "Rhinoコマンド・アクション分類マッピング",
+    "source_file": "rhino_classification_rules.json",
+    "rules_version": "2.2",
+    "generation_date": "2025-10-07",
+    "workflow_logic": "作成 → 構築 → 抽出 → 編集 → コピー&ペースト → 整理 → 表示・分析 → データ管理 → 専門機能・環境設定",
+    "total_items": 648,
+    "total_commands": 639,
+    "total_actions": 9
+  },
+  "workflow_categories": {
+    "creation": {
+      "name_ja": "作成",
+      "name_en": "Creation",
+      "description": "基本的なジオメトリの作成（プリミティブ、カーブ、ポイント）",
+      "priority": 1,
+      "subcategories": [
+        "basic_geometry_creation"
+      ]
+    },
+    "construction": {
+      "name_ja": "構築",
+      "name_en": "Construction",
+      "description": "既存ジオメトリからサーフェス・ソリッドを構築",
+      "priority": 2,
+      "subcategories": [
+        "surface_from_curves_or_points"
+      ]
+    },
+    "extraction": {
+      "name_ja": "抽出",
+      "name_en": "Extraction",
+      "description": "サーフェス・ソリッドから要素を抽出",
+      "priority": 3,
+      "subcategories": [
+        "geometry_extraction"
+      ]
+    },
+    "editing": {
+      "name_ja": "編集",
+      "name_en": "Editing",
+      "description": "ジオメトリの編集・修正・変形",
+      "priority": 4,
+      "subcategories": [
+        "basic_surface_edit",
+        "advanced_surface_edit",
+        "editing_transformation",
+        "curve_editing"
+      ]
+    },
+    "copy_paste": {
+      "name_ja": "コピー&ペースト",
+      "name_en": "Copy & Paste",
+      "description": "オブジェクトのコピー・カット・ペースト・複製",
+      "priority": 5,
+      "subcategories": [
+        "clipboard_operations"
+      ]
+    },
+    "organization": {
+      "name_ja": "整理",
+      "name_en": "Organization",
+      "description": "モデルの整理・配置・選択管理",
+      "priority": 6,
+      "subcategories": [
+        "layer_organization",
+        "selection_manipulation",
+        "array_pattern"
+      ]
+    },
+    "visualization": {
+      "name_ja": "表示",
+      "name_en": "Visualization",
+      "description": "ビュー・カメラ・表示設定",
+      "priority": 7,
+      "subcategories": [
+        "display_view",
+        "cplane_management"
+      ]
+    },
+    "analysis": {
+      "name_ja": "計測・ドキュメント",
+      "name_en": "Measurement & Documentation",
+      "description": "解析・測定・注釈・ドキュメント作成",
+      "priority": 8,
+      "subcategories": [
+        "analysis_measurement",
+        "annotation_documentation"
+      ]
+    },
+    "data_management": {
+      "name_ja": "ファイル管理",
+      "name_en": "File Management",
+      "description": "ファイル操作・インポート・エクスポート",
+      "priority": 9,
+      "subcategories": [
+        "file_import_export",
+        "file_open_close"
+      ]
+    },
+    "specialized": {
+      "name_ja": "専門機能",
+      "name_en": "Specialized Functions",
+      "description": "メッシュ・レンダリング・プラグイン",
+      "priority": 10,
+      "subcategories": [
+        "mesh_operations",
+        "rendering_materials",
+        "vray_rendering",
+        "special_plugins"
+      ]
+    },
+    "settings": {
+      "name_ja": "環境設定",
+      "name_en": "Settings & Environment",
+      "description": "環境設定・ユーティリティ",
+      "priority": 11,
+      "subcategories": [
+        "settings_environment",
+        "utilities"
+      ]
+    }
+  },
+  "classification_mapping": {
+    "Box": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Sphere": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Cylinder": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Cone": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Torus": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Pyramid": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Ellipsoid": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Circle": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Arc": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Ellipse": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Rectangle": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Polygon": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "3DFace": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Point": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Line": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Polyline": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Curve": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "CurveThroughPt": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "InterpCrv": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Spiral": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Helix": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Plane": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "PointCloud": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Vertex": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Tetrahedron": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Paraboloid": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Conic": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Parabola3Pt": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Points": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Lines": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "TruncatedCone": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "TruncatedPyramid": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Tube": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDBox": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDCone": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDCylinder": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDEllipsoid": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDPlane": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDSphere": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDTorus": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "SubDTruncatedCone": {
+      "type": "command",
+      "workflow_category": "creation",
+      "workflow_name_ja": "作成",
+      "workflow_name_en": "Creation",
+      "detail_category": "basic_geometry_creation",
+      "detail_description": "基本プリミティブとシンプルなジオメトリ作成（0次元→1,2,3次元）",
+      "priority": 1
+    },
+    "Loft": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Sweep1": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Sweep2": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Revolve": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "ExtrudeCrv": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "ExtrudeSrf": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Patch": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "NetworkSrf": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "PlanarSrf": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "SrfPt": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "EdgeSrf": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Pipe": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Rail1": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Rail2": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "Drape": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "MultiPipe": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "SrfPtGrid": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "PatchSingleFace": {
+      "type": "command",
+      "workflow_category": "construction",
+      "workflow_name_ja": "構築",
+      "workflow_name_en": "Construction",
+      "detail_category": "surface_from_curves_or_points",
+      "detail_description": "点・線・カーブからサーフェスを構築するコマンド（次元を上げる操作）",
+      "priority": 2
+    },
+    "ExtractIsocurve": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "ExtractSrf": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "DupBorder": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "DupEdge": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "DupFaceBorder": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "ExtractLineTypeSegments": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "ExtractSubCrv": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "ExtractWireframe": {
+      "type": "command",
+      "workflow_category": "extraction",
+      "workflow_name_ja": "抽出",
+      "workflow_name_en": "Extraction",
+      "detail_category": "geometry_extraction",
+      "detail_description": "サーフェス・ソリッドから点・カーブ・エッジを抽出（次元を下げる操作）",
+      "priority": 3
+    },
+    "Trim": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Split": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Untrim": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "SimplifyCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "BooleanUnion": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "BooleanDifference": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "BooleanIntersection": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "BooleanSplit": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Boolean2Objects": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Join": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Explode": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Cap": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "CloseCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "CurveBoolean": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Fillet": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Chamfer": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Extend": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Intersect": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "UnjoinEdge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Fill": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "MakeHole": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "PlaceHole": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Inset": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "SubDivide": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "basic_surface_edit",
+      "detail_description": "基本的なサーフェス編集（トリム・分割・ブーリアン演算）",
+      "priority": 4
+    },
+    "Bevel": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "BlendEdge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "FilletEdge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "ChamferEdge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "BlendSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "RebuildSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Smooth": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Fair": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "MatchSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "SoftMove": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Bend": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Twist": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Taper": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Bridge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "MergeSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "OffsetSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "ShrinkTrimmedSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "InterpCrvOnSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "TweenCurves": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "FilletCorners": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Rebuild": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "InsertKnot": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "RemoveKnot": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "ChamferSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "FilletSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "FilletSrfToRail": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "ExtendSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "UnrollSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "VariableBlendSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "VariableOffsetSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "TweenSurfaces": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "MoveEdge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "MoveFace": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "SplitFace": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "FoldFace": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "PushPull": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "RebuildUV": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Radiate": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "RadiateFind": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "RibbonOffset": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "ToNURBS": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "SoftEditSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "advanced_surface_edit",
+      "detail_description": "高度なサーフェス編集・修正・調整・フィレット",
+      "priority": 5
+    },
+    "Copy": {
+      "type": "command",
+      "workflow_category": "copy_paste",
+      "workflow_name_ja": "コピー&ペースト",
+      "workflow_name_en": "Copy & Paste",
+      "detail_category": "clipboard_operations",
+      "detail_description": "クリップボード操作とオブジェクトのコピー・ペースト",
+      "priority": 5
+    },
+    "CopyToClipboard": {
+      "type": "command",
+      "workflow_category": "copy_paste",
+      "workflow_name_ja": "コピー&ペースト",
+      "workflow_name_en": "Copy & Paste",
+      "detail_category": "clipboard_operations",
+      "detail_description": "クリップボード操作とオブジェクトのコピー・ペースト",
+      "priority": 5
+    },
+    "Cut": {
+      "type": "command",
+      "workflow_category": "copy_paste",
+      "workflow_name_ja": "コピー&ペースト",
+      "workflow_name_en": "Copy & Paste",
+      "detail_category": "clipboard_operations",
+      "detail_description": "クリップボード操作とオブジェクトのコピー・ペースト",
+      "priority": 5
+    },
+    "Paste": {
+      "type": "command",
+      "workflow_category": "copy_paste",
+      "workflow_name_ja": "コピー&ペースト",
+      "workflow_name_en": "Copy & Paste",
+      "detail_category": "clipboard_operations",
+      "detail_description": "クリップボード操作とオブジェクトのコピー・ペースト",
+      "priority": 5
+    },
+    "Move": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Rotate": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Scale": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Scale1D": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Scale2D": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Scale3D": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Mirror": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Orient": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Flow": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Gumball": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "GumballTransform": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Drag": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Delete": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Undo": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Redo": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Flip": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Bounce": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "EditPtOn": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "EditPtOff": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "FlowAlongSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "History": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "HistoryPurge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "LinearSeries": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "MoveHole": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "OrientOnSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "RemoveControlPoint": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "SetPt": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Shear": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Smash": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Squish": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Stretch": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "UnsquishBack": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "UVEditor": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Nudge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Rotate3D": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "ScaleByPlane": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "BringForward": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Reflect": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "RemoveSymmetry": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "InsertControlPoint": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "InsertPoint": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "GumballAlignment": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "GumballAutoReset": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "GumballRelocate": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "GumballReset": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "editing_transformation",
+      "detail_description": "オブジェクトの編集、変換、移動コマンド",
+      "priority": 6
+    },
+    "Array": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "ArrayLinear": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "ArrayPolar": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "ArrayCrv": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "ArrayCrvOnSrf": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "ArraySrf": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "ArrayHole": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "Distribute": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "Align": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "PolarArray": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "array_pattern",
+      "detail_description": "配列とパターン作成コマンド",
+      "priority": 7
+    },
+    "Zoom": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "Pan": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ViewCaptureToFile": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ViewCaptureToClipboard": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SetDisplayMode": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "3View": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "4View": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ClearAllMeshes": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "MaxViewport": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "OneLayerOn": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "RefreshShade": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "RemoveRenderMesh": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SetActiveViewport": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SetObjectDisplayMode": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SetView": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ShowIsocurves": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ShowLayerDialog": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ShowPointsControlPolygon": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ToggleRenderMesh": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "TurnOffSelected": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ViewportProperties": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ZoomIn": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ZoomOut": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "Camera": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ZoomNaked": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "CloseViewport": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "Isometric": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "OneView": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "Plan": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "NamedView": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "NewFloatingViewport": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "NewViewport": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "RedoView": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "UndoView": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "RotateCamera": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "RotateView": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "Shade": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "RenderedViewport": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "PerspectiveAngle": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "ViewportTabs": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "Turntable": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "PlayAnimation": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "RecordAnimation": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SetFlythroughAnimation": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SetOneDaySunAnimation": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SetPathAnimation": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "SubDDisplayToggle": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "MoveTargetToObjects": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "View Changed": {
+      "type": "action",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "display_view",
+      "detail_description": "表示、ビュー、カメラ関連コマンド",
+      "priority": 8
+    },
+    "Layer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "LayerManagerChangeLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "ChangeToCurrentLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "NewLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "CurrentLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Block": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "BlockEdit": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "BlockManager": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "BlockEditAddObjects": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "BlockEditRemoveObjects": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "BlockEditApplyInPlaceEditItemChanges": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Insert": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Properties": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "ObjectProperties": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Purge": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "ChangeObjectLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "CopyLayout": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "DeleteLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "DocumentProperties": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "DocumentPropertiesPage": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "DuplicateBlockDefinition": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "HideLayersInDetail": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "LayerState": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "LayerStateRestore": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "LayerStateSave": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "LockLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "NewLayout": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "ToggleLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "UnlockLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Group": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Ungroup": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "ExplodeBlock": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "WorksessionDetachModel": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "WorksessionRefreshModel": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "SetUserText": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "GetUserText": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "AttributeUserText": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "SetObjectName": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "LayerManagerCopyToLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "LayerManagerSelLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Layouts": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "SetActiveLayout": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "ReplaceDetail": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "NamedSelections": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Libraries": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "ModelBasepoint": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "DeleteMultipleNamedView": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "AddToGroup": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "RemoveFromGroup": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "layer_organization",
+      "detail_description": "レイヤー・ブロック・グループ・モデル組織管理（ワークセッション、オブジェクト属性含む）",
+      "priority": 9
+    },
+    "Select": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelectAll": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelNone": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelLast": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelPrev": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Invert": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelDup": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelSmall": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Hide": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Show": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "ShowAll": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Isolate": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Lock": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Unlock": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "PointsOn": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "PointsOff": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SolidPtOn": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SolidPtOff": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "DigClick": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "DropFileProxy": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "HideInDetail": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "HideSwapObjects": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "InvertSelected": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "LockSelected": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelectionFilter": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelSrf": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "ShowInDetail": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "ShowLayerUI": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SwapObjectLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "UnlockSelected": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelAll": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelBlockInstance": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelBox": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelCaptives": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelChain": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelClosedCrv": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelClosedPolysrf": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelClosedSrf": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelColor": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelControlPoint": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelCrossing": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelCrv": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelDim": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelEdgeRing": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelLayer": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelLine": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelMesh": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelOpenCrv": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelOpenPolysrf": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelPlanarCrv": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelPolyline": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelPolysrf": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelPt": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelText": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "SelWindow": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "HideSwap": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "LockSwap": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Lasso": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "ShowSelected": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "PtOffSelected": {
+      "type": "command",
+      "workflow_category": "organization",
+      "workflow_name_ja": "整理",
+      "workflow_name_en": "Organization",
+      "detail_category": "selection_manipulation",
+      "detail_description": "オブジェクトの選択と操作コマンド",
+      "priority": 10
+    },
+    "Dim": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimAligned": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimLinear": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimOrdinate": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimRadius": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimDiameter": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimAngle": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimRecenterText": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Leader": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Text": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "TextObject": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Dot": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Hatch": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "HatchEdit": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Diameter": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "AnnotationStyle": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Layout": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Detail": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "ClippingDrawings": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "AnnotationArrow": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "CalloutStyle": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "CenterMark": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DetailLock": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DetailProperties": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DetailUnlock": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "DimensionStyle": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "LayoutProperties": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Picture": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "SectionStyle": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "TextFont": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "TextHeight": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "LinearDimensionEdit": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "RLeaderEdit": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "RTextEdit": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "annotation_documentation",
+      "detail_description": "寸法、注釈、ドキュメント作成コマンド",
+      "priority": 11
+    },
+    "Distance": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Area": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Volume": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Length": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Angle": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "BoundingBox": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "CurvatureGraph": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Curvature": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Dir": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Check": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "ShowEdges": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "What": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "List": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "SelBadObjects": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "MassProperties": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Contour": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "SectionTools": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "ClippingPlane": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "DisableClippingPlane": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "AnalyzeEdges": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "AnalyzeSurface": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "CheckNewObjects": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Crv2View": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "CurvatureAnalysis": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "EnvironmentalAnalysis": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "FindFloatingObjects": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "GaussianCurvature": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "HiddenLineDrawing": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "IntersectTwoSets": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "MeanCurvature": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "PointDeviation": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "SelLarge": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "ShowSurfaceDirection": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "SurfaceAnalysis": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "TestToggleObjectSize": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "WhatIsNew": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "EvaluatePt": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Section": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "TestReselectClippingPlanes": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "TestShowSectionStyleDialog": {
+      "type": "command",
+      "workflow_category": "analysis",
+      "workflow_name_ja": "計測・ドキュメント",
+      "workflow_name_en": "Measurement & Documentation",
+      "detail_category": "analysis_measurement",
+      "detail_description": "解析、測定、検査コマンド",
+      "priority": 12
+    },
+    "Save": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "SaveAs": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "SaveSmall": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "Import": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "Export": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "Print": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "PrintPreview": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "Make2D": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "DatasmithExport": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "DatasmithDirectLinkConnections": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "DatasmithDirectLinkSync": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "DatasmithMessages": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "DatasmithToggleAutoSync": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "STLOut": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "OBJExport": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "3DMImport": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "CloseToolbarCollection": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ImportLayout": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "OpenToolbarCollection": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "Packager": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ResetDocumentDefaults": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "SaveIncremental": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "SaveTemplate": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ScreenCaptureToClipboard": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ScreenCaptureToFile": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "SendToBack": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "SendToFront": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ToolbarClose": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ToolbarDelete": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ToolbarLock": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "IncrementalSave": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "SaveACopy": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "ExportWithOrigin": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "InsertFile": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "File Saved": {
+      "type": "action",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "Document Stats": {
+      "type": "action",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_import_export",
+      "detail_description": "ファイル操作、インポート、エクスポート",
+      "priority": 13
+    },
+    "Options": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Units": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Osnap": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "OsnapOff": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "GridSnap": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Grid": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "ShowGrid": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "HideGrid": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Ortho": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Planar": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "SmartTrack": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Cancel": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Escape": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "CommandHistory": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "ToolbarReset": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Macro": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "RunScript": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "LoadPlugin": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "ClearUndo": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Command": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "CommandHelp": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Echo": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "EnableClippingPlane": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Help": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "HideCommandPrompt": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "LoadScript": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "MacroEditor": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Notes": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "RecordSession": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "ResetMenus": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "RunPythonScript": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "SetCommandPrompt": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "ShowCommandPrompt": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Status": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "TestMaxSpeed": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "TestVarsDump": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Timer": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "OptionsPage": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "OrthoAngle": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "PackageManager": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Enter": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "NoEcho": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Snap": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "ShowOsnap": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "ProjectOsnap": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Toolbar": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "SpaceMouse": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "Run": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "MicroScribeCalibrateTip": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "FindText": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "SnapToSubDObject": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "SetCustomLinetype": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "SetPerFaceColorByFacePack": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "settings_environment",
+      "detail_description": "設定、環境、ツール関連コマンド",
+      "priority": 14
+    },
+    "CPlane": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "RemapCPlane": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "MPlane": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "PlaneThroughPt": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "NamedCPlane": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "RestoreNamedCPlane": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "SaveNamedCPlane": {
+      "type": "command",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "CPlane Changed": {
+      "type": "action",
+      "workflow_category": "visualization",
+      "workflow_name_ja": "表示",
+      "workflow_name_en": "Visualization",
+      "detail_category": "cplane_management",
+      "detail_description": "作業平面（CPlane）管理",
+      "priority": 15
+    },
+    "Grasshopper": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "Bongo": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "Flamingo": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "Brazil": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "Penguin": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "Neon": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "V-Ray": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "KeyShot": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "ClimateStudio": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "CSOccupiedAreasPanel": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "CSResultsPanel": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "CSSiteAnalysis": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "CSViewAnalysis": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "CSWorkflowsPanel": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "ApplyBoxEdit": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "BoxEdit": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "SubCrv": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "SubDFromMesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "GrasshopperBake": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "GetObjectProxy": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "GetPointProxy": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "ReplaceObjectProxy": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "special_plugins",
+      "detail_description": "特殊機能とプラグイン関連コマンド",
+      "priority": 15
+    },
+    "OffsetCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "OffsetCrvOnSrf": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "ProjectToCPlane": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "PullCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "RebuildCrvNonUniform": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "ReverseNurbs": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "SplitEdge": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "CrvDeviation": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "CurveEdit": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "Divide": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "DivideAlongCreases": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "EditCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "FindCurveSeams": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "HandleCurve": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "InterpolateCurveOnSurface": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "MakePeriodic": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "MatchCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "MatchProperties": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "NonUniformScale": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "PeriodicCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "ProjectOsnaps": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "SmoothCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "CrvSeam": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "MergeCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "MatchCrvDir": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "Offset": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "Project": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "Pull": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "SoftEditCrv": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "PolylineOnMesh": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "ShortPath": {
+      "type": "command",
+      "workflow_category": "editing",
+      "workflow_name_ja": "編集",
+      "workflow_name_en": "Editing",
+      "detail_category": "curve_editing",
+      "detail_description": "カーブの編集と修正コマンド",
+      "priority": 16
+    },
+    "Render": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "RenderPreview": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "Material": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "ApplyMaterial": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "RemoveMaterial": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "DecalProperties": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "Sun": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "SetSun": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "EnvironmentEditor": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "RenderSettings": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "RenderAssignMaterialToObjects": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "Rendering": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "rendering_materials",
+      "detail_description": "レンダリングとマテリアル関連コマンド",
+      "priority": 17
+    },
+    "Mesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshBooleanDifference": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshBooleanIntersection": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshBooleanSplit": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshBooleanUnion": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshCloseCracks": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshOutline": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshPatch": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshRepair": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshToNurb": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "ReduceMesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "Remesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "ShrinkWrapMesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "UnifyMeshNormals": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "WeldMesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshEllipsoid": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshSplit": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshToNURB": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MeshTrim": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "FillMeshHole": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "FillMeshHoles": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "Merge2MeshFaces": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MergeAllCoplanarFaces": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MergeCoplanarFace": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "MergeFaces": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "RebuildMesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "ExtractConnectedMeshFaces": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "ExtractRenderMesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "ExtrudeMesh": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "mesh_operations",
+      "detail_description": "メッシュ作成と操作コマンド",
+      "priority": 18
+    },
+    "VRayStartRender": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayStopRender": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayApplyMaterialToObjects": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayCreateProxyPreview": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayForRhino": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayMaterialEditor": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayOpenLastImage": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayOptions": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRayRenderRegion": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "VRaySetCamera": {
+      "type": "command",
+      "workflow_category": "specialized",
+      "workflow_name_ja": "専門機能",
+      "workflow_name_en": "Specialized Functions",
+      "detail_category": "vray_rendering",
+      "detail_description": "V-Rayとその他レンダリングプラグイン",
+      "priority": 19
+    },
+    "About": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "CheckForUpdates": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Exit": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Minimize": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Pause": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "PopupMenu": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Quit": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Refresh": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "SetMaximizedState": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "SetWorkingFolder": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Sleep": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Splash": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "SystemInfo": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "TestBackgroundBitmap": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Welcome": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "WindowClose": {
+      "type": "command",
+      "workflow_category": "settings",
+      "workflow_name_ja": "環境設定",
+      "workflow_name_en": "Settings & Environment",
+      "detail_category": "utilities",
+      "detail_description": "ユーティリティとヘルパー機能",
+      "priority": 20
+    },
+    "Open": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_open_close",
+      "detail_description": "ファイル・ドキュメントの開閉、セッション管理",
+      "priority": 21
+    },
+    "New": {
+      "type": "command",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_open_close",
+      "detail_description": "ファイル・ドキュメントの開閉、セッション管理",
+      "priority": 21
+    },
+    "Session Started": {
+      "type": "action",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_open_close",
+      "detail_description": "ファイル・ドキュメントの開閉、セッション管理",
+      "priority": 21
+    },
+    "Session Ended": {
+      "type": "action",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_open_close",
+      "detail_description": "ファイル・ドキュメントの開閉、セッション管理",
+      "priority": 21
+    },
+    "Document Opened": {
+      "type": "action",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_open_close",
+      "detail_description": "ファイル・ドキュメントの開閉、セッション管理",
+      "priority": 21
+    },
+    "Document Closed": {
+      "type": "action",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_open_close",
+      "detail_description": "ファイル・ドキュメントの開閉、セッション管理",
+      "priority": 21
+    },
+    "Object Added": {
+      "type": "action",
+      "workflow_category": "data_management",
+      "workflow_name_ja": "ファイル管理",
+      "workflow_name_en": "File Management",
+      "detail_category": "file_open_close",
+      "detail_description": "ファイル・ドキュメントの開閉、セッション管理",
+      "priority": 21
+    }
+  }
+}

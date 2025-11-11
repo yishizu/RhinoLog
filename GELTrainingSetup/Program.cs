@@ -19,6 +19,9 @@ class TrainingPeriod
 
     [JsonPropertyName("created_at")]
     public string CreatedAt { get; set; } = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+    [JsonPropertyName("server_url")]
+    public string ServerUrl { get; set; }
 }
 
 class Program
@@ -68,11 +71,16 @@ class Program
             return;
         }
 
+        // サーバーURL設定
+        Console.Write("▶ サーバーURL（未入力の場合はサーバー送信なし）: ");
+        string serverUrl = Console.ReadLine()?.Trim();
+
         var period = new TrainingPeriod
         {
             UserName = userName,
             StartDate = startDate,
-            EndDate = endDate
+            EndDate = endDate,
+            ServerUrl = serverUrl
         };
         
         var options = new JsonSerializerOptions

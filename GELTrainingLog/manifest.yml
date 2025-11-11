@@ -1,0 +1,12 @@
+---
+name: geltraininglog
+version: 0.1.3
+authors:
+- GEL
+description: Rhino training log plugin for tracking user operations
+
+distributions:
+  - name: GEL Training Log
+    description: Plugin to track Rhino operations during training
+    platform: windows
+    min_rhino_version: "8.0"

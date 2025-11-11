@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEL Training Log - 管理画面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦏 GEL Training Log - 管理画面</h1>
+
+        <!-- ユーザー登録フォーム -->
+        <div class="section">
+            <h2>新規ユーザー登録</h2>
+            <div id="message"></div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username">ユーザーID <span style="color: red;">*</span></label>
+                    <input type="text" id="username" required placeholder="例: user001, taro_yamada">
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">氏名 <span style="color: red;">*</span></label>
+                    <input type="text" id="fullName" required placeholder="例: 山田太郎">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">メールアドレス <span style="color: red;">*</span></label>
+                    <input type="email" id="email" required placeholder="例: user@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="organization">所属（任意）</label>
+                    <input type="text" id="organization" placeholder="例: ○○大学">
+                </div>
+
+                <div class="form-group">
+                    <label for="startDate">研修開始日 <span style="color: red;">*</span></label>
+                    <input type="date" id="startDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="endDate">研修終了日 <span style="color: red;">*</span></label>
+                    <input type="date" id="endDate" required>
+                </div>
+
+                <button type="submit" id="submitBtn">登録して設定ファイル生成</button>
+            </form>
+        </div>
+
+        <!-- 登録済みユーザー一覧 -->
+        <div class="section">
+            <h2>登録済みユーザー</h2>
+            <div id="loading" class="loading">読み込み中...</div>
+            <table id="userTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ユーザーID</th>
+                        <th>氏名</th>
+                        <th>メール</th>
+                        <th>研修期間</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://136.111.186.176:5000/api';
+
+        // ページ読み込み時の初期化
+        window.addEventListener('load', async () => {
+            await loadUsers();
+        });
+
+        // フォーム送信
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '登録中...';
+
+            const userData = {
+                username: document.getElementById('username').value.trim(),
+                full_name: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                organization: document.getElementById('organization').value.trim(),
+                start_date: document.getElementById('startDate').value,
+                end_date: document.getElementById('endDate').value
+            };
+
+            try {
+                // サーバーに登録
+                const response = await fetch(`${API_BASE}/user/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+
+                if (response.ok) {
+                    showMessage('success', `ユーザー「${userData.username}」を登録しました！`);
+
+                    // .geluserファイルを生成してダウンロード
+                    generateAndDownloadConfig(userData);
+
+                    // フォームをリセット
+                    document.getElementById('registerForm').reset();
+
+                    // ユーザー一覧を再読み込み
+                    await loadUsers();
+                } else {
+                    const error = await response.json();
+                    showMessage('error', `登録エラー: ${error.error || '不明なエラー'}`);
+                }
+            } catch (error) {
+                showMessage('error', `通信エラー: ${error.message}`);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '登録して設定ファイル生成';
+            }
+        });
+
+        // .geluserファイルを生成してダウンロード
+        function generateAndDownloadConfig(userData) {
+            const configContent = {
+                user_id: userData.username,
+                full_name: userData.full_name,
+                email: userData.email,
+                organization: userData.organization,
+                start_date: userData.start_date,
+                end_date: userData.end_date,
+                registered_at: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(configContent, null, 2)], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `${userData.username}.geluser`;
+            link.click();
+
+            showMessage('success', `設定ファイル「${userData.username}.geluser」をダウンロードしました。このファイルを受講者に配布してください。`);
+        }
+
+        // ユーザー一覧を読み込み
+        async function loadUsers() {
+            try {
+                const response = await fetch(`${API_BASE}/users`);
+                const users = await response.json();
+
+                const tbody = document.getElementById('userTableBody');
+                tbody.innerHTML = '';
+
+                users.forEach(user => {
+                    const row = tbody.insertRow();
+                    row.insertCell(0).textContent = user.username;
+                    row.insertCell(1).textContent = user.full_name;
+                    row.insertCell(2).textContent = user.email || '-';
+                    row.insertCell(3).textContent = `${user.start_date} 〜 ${user.end_date}`;
+
+                    const actionsCell = row.insertCell(4);
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'actions';
+
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.textContent = '再ダウンロード';
+                    downloadBtn.className = 'btn-secondary btn-small';
+                    downloadBtn.onclick = () => {
+                        const userData = {
+                            username: user.username,
+                            full_name: user.full_name,
+                            email: user.email,
+                            organization: user.organization,
+                            start_date: user.start_date,
+                            end_date: user.end_date
+                        };
+                        generateAndDownloadConfig(userData);
+                    };
+
+                    actionsDiv.appendChild(downloadBtn);
+                    actionsCell.appendChild(actionsDiv);
+                });
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('userTable').style.display = 'table';
+            } catch (error) {
+                showMessage('error', 'ユーザー一覧の読み込みに失敗しました: ' + error.message);
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        // メッセージ表示
+        function showMessage(type, text) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = text;
+            messageDiv.style.display = 'block';
+
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

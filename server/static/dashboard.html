@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEL Training Log - User Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .control-group select:focus,
+        .control-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #667eea;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .error {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            margin: 20px 30px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .error.active {
+            display: block;
+        }
+
+        .dashboard {
+            display: none;
+            padding: 30px;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .user-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .user-info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-info-item .label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .user-info-item .value {
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 1.5em;
+            font-weight: 800;
+            backdrop-filter: blur(10px);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .chart-container h3 {
+            margin-bottom: 20px;
+            color: #495057;
+            font-size: 1.3em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .chart-container.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-card .stat-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .users-list {
+            display: none;
+            padding: 30px;
+        }
+
+        .users-list.active {
+            display: block;
+        }
+
+        .users-table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        thead th {
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            cursor: pointer;
+        }
+
+        tbody td {
+            padding: 15px 18px;
+        }
+
+        .level-cell {
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .level-L1 { color: #dc3545; }
+        .level-L2 { color: #fd7e14; }
+        .level-L3 { color: #ffc107; }
+        .level-L4 { color: #28a745; }
+        .level-L5 { color: #007bff; }
+
+        .score-cell {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GEL Training Log Dashboard</h1>
+            <p>User Level Classification & Activity Analytics</p>
+        </header>
+
+        <div class="controls">
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="userSelect">Select User</label>
+                    <select id="userSelect">
+                        <option value="">-- Select User --</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="groupSelect">Filter by Learning Group</label>
+                    <select id="groupSelect">
+                        <option value="">-- All Groups --</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="levelFilter">Filter by Level</label>
+                    <select id="levelFilter">
+                        <option value="">-- All Levels --</option>
+                        <option value="1">Level 1</option>
+                        <option value="2">Level 2</option>
+                        <option value="3">Level 3</option>
+                        <option value="4">Level 4</option>
+                        <option value="5">Level 5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="loadUserDashboard()">View User Dashboard</button>
+                <button class="secondary" onclick="showAllUsers()">Show All Users</button>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading data...</p>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <!-- Individual User Dashboard -->
+        <div class="dashboard" id="dashboard">
+            <div class="user-info" id="userInfo">
+                <!-- User info will be populated dynamically -->
+            </div>
+
+            <div class="stats-grid" id="statsGrid">
+                <!-- Stats will be populated dynamically -->
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Experience Levels</h3>
+                    <canvas id="experienceChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Score Breakdown</h3>
+                    <canvas id="scoresChart"></canvas>
+                </div>
+
+                <div class="chart-container full-width">
+                    <h3>CAD Tools & Programming Experience</h3>
+                    <canvas id="cadToolsChart"></canvas>
+                </div>
+
+                <div class="chart-container full-width">
+                    <h3>Activity Logs Timeline</h3>
+                    <canvas id="activityChart"></canvas>
+                </div>
+
+                <div class="chart-container full-width">
+                    <h3>Workflow Categories Distribution</h3>
+                    <canvas id="workflowChart"></canvas>
+                </div>
+
+                <div class="chart-container full-width">
+                    <h3>Detail Categories Breakdown</h3>
+                    <canvas id="detailCategoryChart"></canvas>
+                </div>
+
+                <div class="chart-container full-width">
+                    <h3>Workflow Timeline (Last 100 Actions)</h3>
+                    <canvas id="workflowTimelineChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Users List -->
+        <div class="users-list" id="usersList">
+            <h2 style="margin-bottom: 20px; color: #495057;">All Registered Users</h2>
+            <div class="users-table-container">
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Level</th>
+                            <th>Learning Group</th>
+                            <th>Rhino Score</th>
+                            <th>GH Score</th>
+                            <th>Technical</th>
+                            <th>Self-Learning</th>
+                            <th>CAD Experience</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Users will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SERVER_URL = 'http://136.111.186.176:5000';
+        let allUsers = [];
+        let allGroups = [];
+        let charts = {};
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadUsers();
+            await loadGroups();
+        });
+
+        async function loadUsers() {
+            try {
+                showLoading();
+                const response = await fetch(`${SERVER_URL}/api/users`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const users = await response.json();
+                allUsers = users;
+
+                // Populate user select dropdown
+                const userSelect = document.getElementById('userSelect');
+                userSelect.innerHTML = '<option value="">-- Select User --</option>';
+
+                users.forEach(user => {
+                    const option = document.createElement('option');
+                    option.value = user.username;
+                    option.textContent = `${user.full_name} (${user.username})`;
+                    userSelect.appendChild(option);
+                });
+
+                hideLoading();
+            } catch (error) {
+                showError('Failed to load users: ' + error.message);
+            }
+        }
+
+        async function loadGroups() {
+            try {
+                const response = await fetch(`${SERVER_URL}/api/groups`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const groups = await response.json();
+                allGroups = groups;
+
+                // Populate group select dropdown
+                const groupSelect = document.getElementById('groupSelect');
+                groupSelect.innerHTML = '<option value="">-- All Groups --</option>';
+
+                groups.forEach(group => {
+                    const option = document.createElement('option');
+                    option.value = group.group_id;
+                    option.textContent = `Group ${group.group_id} (${group.user_count} users, Avg Level: ${group.avg_level})`;
+                    groupSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Failed to load groups:', error);
+            }
+        }
+
+        async function loadUserDashboard() {
+            const username = document.getElementById('userSelect').value;
+
+            if (!username) {
+                showError('Please select a user first');
+                return;
+            }
+
+            try {
+                showLoading();
+                hideError();
+
+                // Fetch user details from database
+                const userResponse = await fetch(`${SERVER_URL}/api/user/${username}`);
+                if (!userResponse.ok) {
+                    throw new Error('User not found');
+                }
+
+                const userData = await userResponse.json();
+
+                // Get full user data from users list (includes level info)
+                const dbResponse = await fetch(`${SERVER_URL}/api/users`);
+                const allDbUsers = await dbResponse.json();
+                const fullUserData = allDbUsers.find(u => u.username === username);
+
+                // Fetch user logs
+                const logsResponse = await fetch(`${SERVER_URL}/api/logs?username=${username}`);
+                const logs = await logsResponse.json();
+
+                // Fetch workflow statistics
+                const workflowResponse = await fetch(`${SERVER_URL}/api/stats/workflow/${username}`);
+                const workflowStats = workflowResponse.ok ? await workflowResponse.json() : null;
+
+                // Display dashboard
+                displayUserDashboard(fullUserData || userData, logs, workflowStats);
+
+                document.getElementById('usersList').classList.remove('active');
+                document.getElementById('dashboard').classList.add('active');
+
+                hideLoading();
+            } catch (error) {
+                showError('Failed to load user dashboard: ' + error.message);
+            }
+        }
+
+        function displayUserDashboard(userData, logs, workflowStats) {
+            // Display user info
+            const userInfo = document.getElementById('userInfo');
+            const level = userData.user_level || 1;
+            const levelClass = `level-L${level}`;
+
+            userInfo.innerHTML = `
+                <div class="user-info-item">
+                    <span class="label">Username</span>
+                    <span class="value">${userData.username}</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="label">Full Name</span>
+                    <span class="value">${userData.full_name}</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="label">Email</span>
+                    <span class="value">${userData.email || 'N/A'}</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="label">User Level</span>
+                    <span class="value"><span class="level-badge ${levelClass}">L${level}</span></span>
+                </div>
+                <div class="user-info-item">
+                    <span class="label">Learning Group</span>
+                    <span class="value">${userData.learning_group || 'N/A'}</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="label">Period</span>
+                    <span class="value">${userData.start_date || 'N/A'} - ${userData.end_date || 'N/A'}</span>
+                </div>
+            `;
+
+            // Display stats
+            const rhiExp = userData.rhino_experience || '未経験';
+            const ghExp = userData.grasshopper_experience || '未経験';
+            const techScore = userData.technical_score || 0;
+            const selfScore = userData.self_learning_score || 60;
+            const cadScore = userData.cad_experience_score || 0;
+
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${logs.length}</div>
+                    <div class="stat-label">Total Actions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${techScore.toFixed(1)}</div>
+                    <div class="stat-label">Technical Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${selfScore.toFixed(1)}</div>
+                    <div class="stat-label">Self-Learning Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${cadScore}</div>
+                    <div class="stat-label">CAD Experience Score</div>
+                </div>
+            `;
+
+            // Create charts
+            createExperienceChart(rhiExp, ghExp);
+            createScoresChart(techScore, selfScore, cadScore);
+            createCADToolsChart(userData);
+            createActivityChart(logs);
+            createWorkflowCharts(workflowStats);
+        }
+
+        function createExperienceChart(rhinoExp, ghExp) {
+            const ctx = document.getElementById('experienceChart');
+
+            // Destroy existing chart if it exists
+            if (charts.experienceChart) {
+                charts.experienceChart.destroy();
+            }
+
+            // Convert experience to numeric values
+            const expMapping = {
+                '未経験': 0,
+                '初心者': 30,
+                '中級者': 70,
+                'エキスパート': 100
+            };
+
+            const rhinoValue = expMapping[rhinoExp] || 0;
+            const ghValue = expMapping[ghExp] || 0;
+
+            charts.experienceChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Rhino Experience', 'Grasshopper Experience'],
+                    datasets: [{
+                        label: 'Experience Level',
+                        data: [rhinoValue, ghValue],
+                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(102, 126, 234, 1)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 25
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createScoresChart(techScore, selfScore, cadScore) {
+            const ctx = document.getElementById('scoresChart');
+
+            if (charts.scoresChart) {
+                charts.scoresChart.destroy();
+            }
+
+            charts.scoresChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Technical Score', 'Self-Learning', 'CAD Experience'],
+                    datasets: [{
+                        label: 'Scores',
+                        data: [techScore, selfScore, cadScore],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createCADToolsChart(userData) {
+            const ctx = document.getElementById('cadToolsChart');
+
+            if (charts.cadToolsChart) {
+                charts.cadToolsChart.destroy();
+            }
+
+            // Parse CAD tools, modeling tools, and programming languages
+            const cadTools = (userData.cad_tools || '').split(/[;,]/).filter(t => t.trim());
+            const modelingTools = (userData.modeling_tools || '').split(/[;,]/).filter(t => t.trim());
+            const progLangs = (userData.programming_languages || '').split(/[;,]/).filter(t => t.trim());
+
+            const allTools = [
+                ...cadTools.map(t => ({ name: t.trim(), category: 'CAD/BIM' })),
+                ...modelingTools.map(t => ({ name: t.trim(), category: '3D Modeling' })),
+                ...progLangs.map(t => ({ name: t.trim(), category: 'Programming' }))
+            ];
+
+            if (allTools.length === 0) {
+                ctx.parentElement.innerHTML = '<h3>CAD Tools & Programming Experience</h3><p style="text-align: center; padding: 40px; color: #999;">No tools data available</p>';
+                return;
+            }
+
+            const categories = ['CAD/BIM', '3D Modeling', 'Programming'];
+            const counts = categories.map(cat => allTools.filter(t => t.category === cat).length);
+
+            charts.cadToolsChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        data: counts,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(75, 192, 192, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const category = context.label;
+                                    const tools = allTools.filter(t => t.category === category).map(t => t.name);
+                                    return tools.length > 0 ? '\n' + tools.join(', ') : '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createActivityChart(logs) {
+            const ctx = document.getElementById('activityChart');
+
+            if (charts.activityChart) {
+                charts.activityChart.destroy();
+            }
+
+            if (logs.length === 0) {
+                ctx.parentElement.innerHTML = '<h3>Activity Logs Timeline</h3><p style="text-align: center; padding: 40px; color: #999;">No activity logs available</p>';
+                return;
+            }
+
+            // Count actions by type
+            const actionCounts = {};
+            logs.forEach(log => {
+                const action = log.action || 'Unknown';
+                actionCounts[action] = (actionCounts[action] || 0) + 1;
+            });
+
+            const labels = Object.keys(actionCounts);
+            const data = Object.values(actionCounts);
+
+            charts.activityChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Action Count',
+                        data: data,
+                        backgroundColor: 'rgba(102, 126, 234, 0.7)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createWorkflowCharts(workflowStats) {
+            if (!workflowStats) {
+                // Hide workflow charts if no data
+                document.getElementById('workflowChart').parentElement.style.display = 'none';
+                document.getElementById('detailCategoryChart').parentElement.style.display = 'none';
+                document.getElementById('workflowTimelineChart').parentElement.style.display = 'none';
+                return;
+            }
+
+            // Show workflow charts
+            document.getElementById('workflowChart').parentElement.style.display = 'block';
+            document.getElementById('detailCategoryChart').parentElement.style.display = 'block';
+            document.getElementById('workflowTimelineChart').parentElement.style.display = 'block';
+
+            createWorkflowCategoryChart(workflowStats);
+            createDetailCategoryChart(workflowStats);
+            createWorkflowTimelineChart(workflowStats);
+        }
+
+        function createWorkflowCategoryChart(workflowStats) {
+            const ctx = document.getElementById('workflowChart');
+
+            if (charts.workflowChart) {
+                charts.workflowChart.destroy();
+            }
+
+            const workflowCounts = workflowStats.workflow_category_counts || {};
+            const workflowNames = workflowStats.workflow_category_names || {};
+
+            if (Object.keys(workflowCounts).length === 0) {
+                ctx.parentElement.innerHTML = '<h3>Workflow Categories Distribution</h3><p style="text-align: center; padding: 40px; color: #999;">No workflow data available</p>';
+                return;
+            }
+
+            // Sort by count descending and get top 10
+            const sorted = Object.entries(workflowCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+            const labels = sorted.map(([key, _]) => workflowNames[key] || key);
+            const data = sorted.map(([_, count]) => count);
+
+            // Define colors for workflow categories
+            const workflowColors = {
+                'creation': '#FF6B6B',
+                'construction': '#4ECDC4',
+                'extraction': '#45B7D1',
+                'editing': '#FFA07A',
+                'copy_paste': '#98D8C8',
+                'organization': '#FFD93D',
+                'visualization': '#6BCF7F',
+                'analysis': '#A8DADC',
+                'data_management': '#457B9D',
+                'settings': '#E63946',
+                'specialized': '#F4A261'
+            };
+
+            const keys = sorted.map(([key, _]) => key);
+            const colors = keys.map(key => workflowColors[key] || '#95A5A6');
+
+            charts.workflowChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        borderColor: colors.map(c => c),
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 15,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createDetailCategoryChart(workflowStats) {
+            const ctx = document.getElementById('detailCategoryChart');
+
+            if (charts.detailCategoryChart) {
+                charts.detailCategoryChart.destroy();
+            }
+
+            const detailCounts = workflowStats.detail_category_counts || {};
+
+            if (Object.keys(detailCounts).length === 0) {
+                ctx.parentElement.innerHTML = '<h3>Detail Categories Breakdown</h3><p style="text-align: center; padding: 40px; color: #999;">No detail category data available</p>';
+                return;
+            }
+
+            // Sort by count descending and get top 15
+            const sorted = Object.entries(detailCounts).sort((a, b) => b[1] - a[1]).slice(0, 15);
+            const labels = sorted.map(([key, _]) => key);
+            const data = sorted.map(([_, count]) => count);
+
+            charts.detailCategoryChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Action Count',
+                        data: data,
+                        backgroundColor: 'rgba(78, 205, 196, 0.7)',
+                        borderColor: 'rgba(78, 205, 196, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createWorkflowTimelineChart(workflowStats) {
+            const ctx = document.getElementById('workflowTimelineChart');
+
+            if (charts.workflowTimelineChart) {
+                charts.workflowTimelineChart.destroy();
+            }
+
+            const timeline = workflowStats.timeline || [];
+
+            if (timeline.length === 0) {
+                ctx.parentElement.innerHTML = '<h3>Workflow Timeline (Last 100 Actions)</h3><p style="text-align: center; padding: 40px; color: #999;">No timeline data available</p>';
+                return;
+            }
+
+            const workflowNames = workflowStats.workflow_category_names || {};
+
+            // Count workflow categories in timeline
+            const workflowCounts = {};
+            timeline.forEach(item => {
+                const cat = item.workflow_category;
+                workflowCounts[cat] = (workflowCounts[cat] || 0) + 1;
+            });
+
+            const labels = Object.keys(workflowCounts).map(key => workflowNames[key] || key);
+            const data = Object.values(workflowCounts);
+
+            // Define colors
+            const workflowColors = {
+                'creation': '#FF6B6B',
+                'construction': '#4ECDC4',
+                'extraction': '#45B7D1',
+                'editing': '#FFA07A',
+                'copy_paste': '#98D8C8',
+                'organization': '#FFD93D',
+                'visualization': '#6BCF7F',
+                'analysis': '#A8DADC',
+                'data_management': '#457B9D',
+                'settings': '#E63946',
+                'specialized': '#F4A261'
+            };
+
+            const keys = Object.keys(workflowCounts);
+            const colors = keys.map(key => workflowColors[key] || '#95A5A6');
+
+            charts.workflowTimelineChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Recent Actions',
+                        data: data,
+                        backgroundColor: colors,
+                        borderColor: colors,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const category = keys[context.dataIndex];
+                                    // Find example commands from timeline
+                                    const examples = timeline
+                                        .filter(item => item.workflow_category === category)
+                                        .map(item => item.command)
+                                        .filter((v, i, a) => a.indexOf(v) === i)
+                                        .slice(0, 3);
+                                    return examples.length > 0 ? '\nExamples: ' + examples.join(', ') : '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function showAllUsers() {
+            try {
+                showLoading();
+                hideError();
+
+                // Fetch all users with full details
+                const response = await fetch(`${SERVER_URL}/api/users`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const users = await response.json();
+
+                // Get full database info (with scores and levels)
+                const dbUsers = [];
+                for (const user of users) {
+                    try {
+                        const userResponse = await fetch(`${SERVER_URL}/api/user/${user.username}`);
+                        if (userResponse.ok) {
+                            const userData = await userResponse.json();
+                            dbUsers.push({ ...user, ...userData });
+                        } else {
+                            dbUsers.push(user);
+                        }
+                    } catch (e) {
+                        dbUsers.push(user);
+                    }
+                }
+
+                displayUsersTable(dbUsers);
+
+                document.getElementById('dashboard').classList.remove('active');
+                document.getElementById('usersList').classList.add('active');
+
+                hideLoading();
+            } catch (error) {
+                showError('Failed to load users: ' + error.message);
+            }
+        }
+
+        function displayUsersTable(users) {
+            const tbody = document.querySelector('#usersTable tbody');
+            tbody.innerHTML = '';
+
+            // Apply filters
+            const groupFilter = document.getElementById('groupSelect').value;
+            const levelFilter = document.getElementById('levelFilter').value;
+
+            let filteredUsers = users;
+
+            if (groupFilter) {
+                filteredUsers = filteredUsers.filter(u => u.learning_group === groupFilter);
+            }
+
+            if (levelFilter) {
+                filteredUsers = filteredUsers.filter(u => u.user_level == levelFilter);
+            }
+
+            filteredUsers.forEach(user => {
+                const row = document.createElement('tr');
+                const level = user.user_level || 1;
+                const levelClass = `level-L${level}`;
+
+                // Convert experience to scores
+                const expMapping = {
+                    '未経験': 0,
+                    '初心者': 30,
+                    '中級者': 70,
+                    'エキスパート': 100
+                };
+
+                const rhinoScore = expMapping[user.rhino_experience] || 0;
+                const ghScore = expMapping[user.grasshopper_experience] || 0;
+
+                row.innerHTML = `
+                    <td>${user.username}</td>
+                    <td>${user.full_name}</td>
+                    <td>${user.email || 'N/A'}</td>
+                    <td class="level-cell ${levelClass}">L${level}</td>
+                    <td>${user.learning_group || 'N/A'}</td>
+                    <td class="score-cell">${rhinoScore}</td>
+                    <td class="score-cell">${ghScore}</td>
+                    <td class="score-cell">${(user.technical_score || 0).toFixed(1)}</td>
+                    <td class="score-cell">${(user.self_learning_score || 60).toFixed(1)}</td>
+                    <td class="score-card">${user.cad_experience_score || 0}</td>
+                `;
+
+                row.onclick = () => {
+                    document.getElementById('userSelect').value = user.username;
+                    loadUserDashboard();
+                };
+
+                tbody.appendChild(row);
+            });
+        }
+
+        function showLoading() {
+            document.getElementById('loading').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('active');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('active');
+            hideLoading();
+        }
+
+        function hideError() {
+            document.getElementById('error').classList.remove('active');
+        }
+
+        // Update filters on change
+        document.getElementById('groupSelect').addEventListener('change', () => {
+            if (document.getElementById('usersList').classList.contains('active')) {
+                showAllUsers();
+            }
+        });
+
+        document.getElementById('levelFilter').addEventListener('change', () => {
+            if (document.getElementById('usersList').classList.contains('active')) {
+                showAllUsers();
+            }
+        });
+    </script>
+</body>
+</html>

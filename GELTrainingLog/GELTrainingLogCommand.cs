@@ -22,22 +22,73 @@ namespace GELTrainingLog
         public static GELTrainingLogCommand Instance { get; private set; }
 
         ///<returns>The command name as it appears on the Rhino command line.</returns>
-        public override string EnglishName => "GELTrainingLogCommand";
+        public override string EnglishName => "GELUserLogin";
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            RhinoApp.WriteLine("The {0} command is under construction.", EnglishName);
-
-            // GELTrainingLogCommand 実行時のログを記録
-            var logger = GELTrainingLogPlugin.Instance;
-            if (logger != null)
+            // .geluser ファイルを選択
+            var openFileDialog = new Rhino.UI.OpenFileDialog
             {
-                var user = System.Environment.UserName;
-                logger.GetType().GetMethod("Log", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                    ?.Invoke(logger, new object[] { "Custom Command", EnglishName });
+                Filter = "GEL User Config (*.geluser)|*.geluser",
+                Title = "GEL User Config File を選択してください"
+            };
+
+            if (!openFileDialog.ShowOpenDialog())
+            {
+                RhinoApp.WriteLine("Cancelled.");
+                return Result.Cancel;
             }
 
-            return Result.Success;
+            string filePath = openFileDialog.FileName;
+
+            try
+            {
+                // ファイルを読み込み
+                string jsonContent = System.IO.File.ReadAllText(filePath);
+                var userConfig = System.Text.Json.JsonSerializer.Deserialize<UserConfig>(jsonContent);
+
+                if (userConfig == null || string.IsNullOrWhiteSpace(userConfig.user_id))
+                {
+                    RhinoApp.WriteLine("⚠ 無効な設定ファイルです。");
+                    return Result.Failure;
+                }
+
+                // 設定を保存
+                string configPath = System.IO.Path.Combine(
+                    System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData),
+                    "GEL", "user_config.txt");
+
+                string configDir = System.IO.Path.GetDirectoryName(configPath);
+                if (!System.IO.Directory.Exists(configDir))
+                {
+                    System.IO.Directory.CreateDirectory(configDir);
+                }
+
+                System.IO.File.WriteAllText(configPath, userConfig.user_id);
+
+                RhinoApp.WriteLine("✓ ユーザー登録が完了しました！");
+                RhinoApp.WriteLine($"✓ User ID: {userConfig.user_id}");
+                RhinoApp.WriteLine($"✓ 氏名: {userConfig.full_name}");
+                RhinoApp.WriteLine("✓ Rhinoを再起動してください。");
+
+                return Result.Success;
+            }
+            catch (System.Exception ex)
+            {
+                RhinoApp.WriteLine("⚠ エラー: " + ex.Message);
+                return Result.Failure;
+            }
+        }
+
+        private class UserConfig
+        {
+            public string user_id { get; set; }
+            public string full_name { get; set; }
+            public string email { get; set; }
+            public string organization { get; set; }
+            public string start_date { get; set; }
+            public string end_date { get; set; }
+            public string registered_at { get; set; }
         }
     }
 }
