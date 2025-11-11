@@ -925,10 +925,18 @@ def analyze_action_group(group_actions, start_time):
             command_name = detail.split(';')[0].strip()
             workflow_cat, detail_cat = classify_command(command_name)
 
+            # Add categories to action data
+            action_dict['WorkflowCategory'] = workflow_cat if workflow_cat else 'Unknown'
+            action_dict['DetailCategory'] = detail_cat if detail_cat else 'Unknown'
+
             if workflow_cat:
                 workflow_counts[workflow_cat] += 1
             if detail_cat:
                 detail_counts[detail_cat] += 1
+        else:
+            # For non-command actions, set as Unknown
+            action_dict['WorkflowCategory'] = 'Unknown'
+            action_dict['DetailCategory'] = 'Unknown'
 
     # Get workflow category names
     workflow_names = {}

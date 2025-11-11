@@ -78,12 +78,12 @@ namespace GELTrainingLog
 
             var now = DateTime.Now;
 
-            // 期間が設定されている場合だけチェック
-            if (_periodStart.HasValue && _periodEnd.HasValue)
-            {
-                if (now < _periodStart.Value || now > _periodEnd.Value)
-                    return; // ログを記録しない
-            }
+            // 期間チェックを一時的に無効化（テスト用）
+            // if (_periodStart.HasValue && _periodEnd.HasValue)
+            // {
+            //     if (now < _periodStart.Value || now > _periodEnd.Value)
+            //         return; // ログを記録しない
+            // }
 
             var logLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss},{_userID},{action},\"{detail}\"\n";
             lock (_logLock)
@@ -190,18 +190,24 @@ namespace GELTrainingLog
         private void LoadUserInfoFromServer()
         {
             RhinoApp.WriteLine("Checking user registration...");
+            RhinoApp.WriteLine($"DEBUG: Connecting to {SERVER_URL}/api/user/{_userID}");
             try
             {
                 var response = _httpClient.GetAsync($"{SERVER_URL}/api/user/{_userID}").Result;
+                RhinoApp.WriteLine($"DEBUG: Server response status: {response.StatusCode}");
 
                 if (response.IsSuccessStatusCode)
                 {
                     var json = response.Content.ReadAsStringAsync().Result;
+                    RhinoApp.WriteLine($"DEBUG: Server response JSON: {json}");
                     var userInfo = JsonSerializer.Deserialize<UserInfo>(json);
 
                     if (userInfo != null && userInfo.registered)
                     {
                         _isRegisteredUser = true;
+                        RhinoApp.WriteLine($"DEBUG: User registered flag: {userInfo.registered}");
+                        RhinoApp.WriteLine($"DEBUG: Start date from server: {userInfo.start_date}");
+                        RhinoApp.WriteLine($"DEBUG: End date from server: {userInfo.end_date}");
 
                         if (DateTime.TryParse(userInfo.start_date, out var start) &&
                             DateTime.TryParse(userInfo.end_date, out var end))
@@ -210,12 +216,19 @@ namespace GELTrainingLog
                             _periodEnd = end;
                             RhinoApp.WriteLine($"✓ User registered: {userInfo.full_name}");
                             RhinoApp.WriteLine($"✓ Training period: {_periodStart:yyyy-MM-dd} to {_periodEnd:yyyy-MM-dd}");
+                            RhinoApp.WriteLine($"DEBUG: _isRegisteredUser = {_isRegisteredUser}");
                         }
                         else
                         {
                             RhinoApp.WriteLine("⚠ Invalid date format from server");
+                            RhinoApp.WriteLine($"DEBUG: Failed to parse - start: '{userInfo.start_date}', end: '{userInfo.end_date}'");
                             _isRegisteredUser = false;
                         }
+                    }
+                    else
+                    {
+                        RhinoApp.WriteLine($"DEBUG: userInfo is null or not registered. userInfo={userInfo}, registered={userInfo?.registered}");
+                        _isRegisteredUser = false;
                     }
                 }
                 else
@@ -228,6 +241,7 @@ namespace GELTrainingLog
             catch (Exception ex)
             {
                 RhinoApp.WriteLine("⚠ Could not connect to server: " + ex.Message);
+                RhinoApp.WriteLine($"DEBUG: Exception details: {ex.ToString()}");
                 RhinoApp.WriteLine("⚠ Logging disabled. Please check your internet connection.");
                 _isRegisteredUser = false;
             }

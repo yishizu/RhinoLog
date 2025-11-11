@@ -939,16 +939,47 @@
         }
 
         function createActionGroupsCharts(actionGroupsData) {
-            if (!actionGroupsData || !actionGroupsData.groups || actionGroupsData.groups.length === 0) {
-                // Hide action groups charts if no data
-                document.getElementById('actionGroupsChart').parentElement.style.display = 'none';
-                document.getElementById('actionGroupsTimeline').parentElement.style.display = 'none';
+            console.log('=== createActionGroupsCharts ===');
+            console.log('Data received:', actionGroupsData);
+
+            const chartContainer = document.getElementById('actionGroupsChart').parentElement;
+            const timelineContainer = document.getElementById('actionGroupsTimeline').parentElement;
+
+            if (!actionGroupsData) {
+                console.warn('⚠ No action groups data received (null/undefined)');
+                chartContainer.innerHTML = '<h3>Action Groups (10-Minute Intervals)</h3><p style="text-align: center; padding: 40px; color: #999;">No activity data available</p>';
+                timelineContainer.innerHTML = '<h3>Action Groups Timeline</h3><p style="text-align: center; padding: 40px; color: #999;">No activity data available</p>';
                 return;
             }
 
+            if (!actionGroupsData.groups) {
+                console.warn('⚠ actionGroupsData.groups is missing');
+                chartContainer.innerHTML = '<h3>Action Groups (10-Minute Intervals)</h3><p style="text-align: center; padding: 40px; color: #999;">No activity data available</p>';
+                timelineContainer.innerHTML = '<h3>Action Groups Timeline</h3><p style="text-align: center; padding: 40px; color: #999;">No activity data available</p>';
+                return;
+            }
+
+            if (actionGroupsData.groups.length === 0) {
+                console.warn('⚠ No action groups available (empty array)');
+                console.log('This is normal if the user has no activity logs yet');
+                chartContainer.innerHTML = '<h3>Action Groups (10-Minute Intervals)</h3><p style="text-align: center; padding: 40px; color: #999;">このユーザーにはまだアクティビティログがありません</p>';
+                timelineContainer.innerHTML = '<h3>Action Groups Timeline</h3><p style="text-align: center; padding: 40px; color: #999;">このユーザーにはまだアクティビティログがありません</p>';
+                return;
+            }
+
+            console.log('✓ Creating action groups charts with', actionGroupsData.groups.length, 'groups');
+
             // Show action groups charts
-            document.getElementById('actionGroupsChart').parentElement.style.display = 'block';
-            document.getElementById('actionGroupsTimeline').parentElement.style.display = 'block';
+            chartContainer.style.display = 'block';
+            timelineContainer.style.display = 'block';
+
+            // Restore canvas and div if they were replaced by message
+            if (!document.getElementById('actionGroupsChart') || document.getElementById('actionGroupsChart').tagName !== 'CANVAS') {
+                chartContainer.innerHTML = '<h3>Action Groups (10-Minute Intervals)</h3><canvas id="actionGroupsChart"></canvas>';
+            }
+            if (!document.getElementById('actionGroupsTimeline') || !document.getElementById('actionGroupsTimeline').tagName === 'DIV') {
+                timelineContainer.innerHTML = '<h3>Action Groups Timeline</h3><div id="actionGroupsTimeline" style="max-height: 400px; overflow-y: auto;"></div>';
+            }
 
             createActionGroupsBarChart(actionGroupsData);
             createActionGroupsTimeline(actionGroupsData);
@@ -1027,10 +1058,18 @@
         }
 
         function createActionGroupsTimeline(actionGroupsData) {
+            console.log('createActionGroupsTimeline called');
             const timeline = document.getElementById('actionGroupsTimeline');
+
+            if (!timeline) {
+                console.error('Timeline element not found!');
+                return;
+            }
+
             timeline.innerHTML = '';
 
             const groups = actionGroupsData.groups;
+            console.log('Creating timeline for', groups.length, 'groups');
 
             groups.forEach((group, idx) => {
                 const groupDiv = document.createElement('div');
