@@ -1,0 +1,27 @@
+{
+  "detail_category_names": {
+    "basic_geometry_creation": "基本ジオメトリ作成",
+    "surface_from_curves_or_points": "カーブ・ポイントからサーフェス構築",
+    "geometry_extraction": "ジオメトリ抽出",
+    "basic_surface_edit": "基本サーフェス編集",
+    "advanced_surface_edit": "高度なサーフェス編集",
+    "editing_transformation": "編集・変形",
+    "curve_editing": "カーブ編集",
+    "clipboard_operations": "コピー&ペースト",
+    "array_pattern": "配列・パターン",
+    "layer_organization": "レイヤー・整理",
+    "selection_manipulation": "選択・操作",
+    "display_view": "表示・ビュー",
+    "analysis_measurement": "分析・測定",
+    "annotation_documentation": "注釈・ドキュメント",
+    "file_open_close": "ファイル開閉",
+    "file_import_export": "ファイルインポート・エクスポート",
+    "mesh_operations": "メッシュ操作",
+    "rendering_materials": "レンダリング・マテリアル",
+    "vray_rendering": "V-Rayレンダリング",
+    "special_plugins": "特殊プラグイン",
+    "settings_environment": "環境設定",
+    "utilities": "ユーティリティ",
+    "cplane_management": "CPlane管理"
+  }
+}

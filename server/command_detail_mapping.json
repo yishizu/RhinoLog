@@ -1,0 +1,2598 @@
+{
+  "description": "Simple command to detail_category mapping",
+  "total_commands": 648,
+  "commands": {
+    "3DFace": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "3DMImport": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "3View": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "4View": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "About": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "AddToGroup": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Align": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "AnalyzeEdges": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "AnalyzeSurface": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Angle": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "AnnotationArrow": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "AnnotationStyle": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "ApplyBoxEdit": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "ApplyMaterial": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "Arc": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Area": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Array": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "ArrayCrv": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "ArrayCrvOnSrf": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "ArrayHole": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "ArrayLinear": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "ArrayPolar": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "ArraySrf": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "AttributeUserText": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Bend": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Bevel": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "BlendEdge": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "BlendSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Block": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "BlockEdit": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "BlockEditAddObjects": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "BlockEditApplyInPlaceEditItemChanges": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "BlockEditRemoveObjects": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "BlockManager": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Bongo": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "Boolean2Objects": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "BooleanDifference": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "BooleanIntersection": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "BooleanSplit": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "BooleanUnion": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "Bounce": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "BoundingBox": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Box": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "BoxEdit": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "Brazil": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "Bridge": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "BringForward": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "CPlane": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "CPlane Changed": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "CSOccupiedAreasPanel": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "CSResultsPanel": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "CSSiteAnalysis": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "CSViewAnalysis": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "CSWorkflowsPanel": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "CalloutStyle": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Camera": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Cancel": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Cap": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "CenterMark": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Chamfer": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "ChamferEdge": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "ChamferSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "ChangeObjectLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "ChangeToCurrentLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Check": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "CheckForUpdates": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "CheckNewObjects": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Circle": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "ClearAllMeshes": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ClearUndo": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "ClimateStudio": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "ClippingDrawings": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "ClippingPlane": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "CloseCrv": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "CloseToolbarCollection": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "CloseViewport": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Command": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "CommandHelp": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "CommandHistory": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Cone": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Conic": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Contour": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Copy": {
+      "workflow_category": "copy_paste",
+      "detail_category": "clipboard_operations"
+    },
+    "CopyLayout": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "CopyToClipboard": {
+      "workflow_category": "copy_paste",
+      "detail_category": "clipboard_operations"
+    },
+    "Crv2View": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "CrvDeviation": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "CrvSeam": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "CurrentLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Curvature": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "CurvatureAnalysis": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "CurvatureGraph": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Curve": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "CurveBoolean": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "CurveEdit": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "CurveThroughPt": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Cut": {
+      "workflow_category": "copy_paste",
+      "detail_category": "clipboard_operations"
+    },
+    "Cylinder": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "DatasmithDirectLinkConnections": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "DatasmithDirectLinkSync": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "DatasmithExport": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "DatasmithMessages": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "DatasmithToggleAutoSync": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "DecalProperties": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "Delete": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "DeleteLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "DeleteMultipleNamedView": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Detail": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DetailLock": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DetailProperties": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DetailUnlock": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Diameter": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DigClick": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Dim": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimAligned": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimAngle": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimDiameter": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimLinear": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimOrdinate": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimRadius": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimRecenterText": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "DimensionStyle": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Dir": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "DisableClippingPlane": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Distance": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Distribute": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "Divide": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "DivideAlongCreases": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Document Closed": {
+      "workflow_category": "data_management",
+      "detail_category": "file_open_close"
+    },
+    "Document Opened": {
+      "workflow_category": "data_management",
+      "detail_category": "file_open_close"
+    },
+    "Document Stats": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "DocumentProperties": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "DocumentPropertiesPage": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Dot": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Drag": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Drape": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "DropFileProxy": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "DupBorder": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "DupEdge": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "DupFaceBorder": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "DuplicateBlockDefinition": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Echo": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "EdgeSrf": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "EditCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "EditPtOff": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "EditPtOn": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Ellipse": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Ellipsoid": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "EnableClippingPlane": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Enter": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "EnvironmentEditor": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "EnvironmentalAnalysis": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Escape": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "EvaluatePt": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Exit": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "Explode": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "ExplodeBlock": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Export": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "ExportWithOrigin": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Extend": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "ExtendSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "ExtractConnectedMeshFaces": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "ExtractIsocurve": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "ExtractLineTypeSegments": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "ExtractRenderMesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "ExtractSrf": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "ExtractSubCrv": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "ExtractWireframe": {
+      "workflow_category": "extraction",
+      "detail_category": "geometry_extraction"
+    },
+    "ExtrudeCrv": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "ExtrudeMesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "ExtrudeSrf": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "Fair": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "File Saved": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Fill": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "FillMeshHole": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "FillMeshHoles": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "Fillet": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "FilletCorners": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "FilletEdge": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "FilletSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "FilletSrfToRail": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "FindCurveSeams": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "FindFloatingObjects": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "FindText": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Flamingo": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "Flip": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Flow": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "FlowAlongSrf": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "FoldFace": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "GaussianCurvature": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "GetObjectProxy": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "GetPointProxy": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "GetUserText": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Grasshopper": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "GrasshopperBake": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "Grid": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "GridSnap": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Group": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Gumball": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "GumballAlignment": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "GumballAutoReset": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "GumballRelocate": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "GumballReset": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "GumballTransform": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "HandleCurve": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Hatch": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "HatchEdit": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Helix": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Help": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "HiddenLineDrawing": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Hide": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "HideCommandPrompt": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "HideGrid": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "HideInDetail": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "HideLayersInDetail": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "HideSwap": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "HideSwapObjects": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "History": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "HistoryPurge": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Import": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "ImportLayout": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "IncrementalSave": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Insert": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "InsertControlPoint": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "InsertFile": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "InsertKnot": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "InsertPoint": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Inset": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "InterpCrv": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "InterpCrvOnSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "InterpolateCurveOnSurface": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Intersect": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "IntersectTwoSets": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Invert": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "InvertSelected": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Isolate": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Isometric": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Join": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "KeyShot": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "Lasso": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Layer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "LayerManagerChangeLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "LayerManagerCopyToLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "LayerManagerSelLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "LayerState": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "LayerStateRestore": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "LayerStateSave": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Layout": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "LayoutProperties": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Layouts": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Leader": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Length": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Libraries": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Line": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "LinearDimensionEdit": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "LinearSeries": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Lines": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "List": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "LoadPlugin": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "LoadScript": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Lock": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "LockLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "LockSelected": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "LockSwap": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Loft": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "MPlane": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "Macro": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "MacroEditor": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Make2D": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "MakeHole": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "MakePeriodic": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "MassProperties": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "MatchCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "MatchCrvDir": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "MatchProperties": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "MatchSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Material": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "MaxViewport": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "MeanCurvature": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Merge2MeshFaces": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MergeAllCoplanarFaces": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MergeCoplanarFace": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MergeCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "MergeFaces": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MergeSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Mesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshBooleanDifference": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshBooleanIntersection": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshBooleanSplit": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshBooleanUnion": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshCloseCracks": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshEllipsoid": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshOutline": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshPatch": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshRepair": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshSplit": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshToNURB": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshToNurb": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MeshTrim": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "MicroScribeCalibrateTip": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Minimize": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "Mirror": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "ModelBasepoint": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Move": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "MoveEdge": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "MoveFace": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "MoveHole": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "MoveTargetToObjects": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "MultiPipe": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "NamedCPlane": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "NamedSelections": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "NamedView": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Neon": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "NetworkSrf": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "New": {
+      "workflow_category": "data_management",
+      "detail_category": "file_open_close"
+    },
+    "NewFloatingViewport": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "NewLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "NewLayout": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "NewViewport": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "NoEcho": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "NonUniformScale": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Notes": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Nudge": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "OBJExport": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Object Added": {
+      "workflow_category": "data_management",
+      "detail_category": "file_open_close"
+    },
+    "ObjectProperties": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Offset": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "OffsetCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "OffsetCrvOnSrf": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "OffsetSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "OneLayerOn": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "OneView": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Open": {
+      "workflow_category": "data_management",
+      "detail_category": "file_open_close"
+    },
+    "OpenToolbarCollection": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Options": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "OptionsPage": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Orient": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "OrientOnSrf": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Ortho": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "OrthoAngle": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Osnap": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "OsnapOff": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "PackageManager": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Packager": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Pan": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Parabola3Pt": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Paraboloid": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Paste": {
+      "workflow_category": "copy_paste",
+      "detail_category": "clipboard_operations"
+    },
+    "Patch": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "PatchSingleFace": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "Pause": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "Penguin": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "PeriodicCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "PerspectiveAngle": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Picture": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Pipe": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "PlaceHole": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "Plan": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Planar": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "PlanarSrf": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "Plane": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "PlaneThroughPt": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "PlayAnimation": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Point": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "PointCloud": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "PointDeviation": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Points": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "PointsOff": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "PointsOn": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "PolarArray": {
+      "workflow_category": "organization",
+      "detail_category": "array_pattern"
+    },
+    "Polygon": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Polyline": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "PolylineOnMesh": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "PopupMenu": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "Print": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "PrintPreview": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Project": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "ProjectOsnap": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "ProjectOsnaps": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "ProjectToCPlane": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Properties": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "PtOffSelected": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Pull": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "PullCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Purge": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "PushPull": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Pyramid": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Quit": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "RLeaderEdit": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "RTextEdit": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Radiate": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "RadiateFind": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Rail1": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "Rail2": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "Rebuild": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "RebuildCrvNonUniform": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "RebuildMesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "RebuildSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "RebuildUV": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "RecordAnimation": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "RecordSession": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Rectangle": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Redo": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "RedoView": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ReduceMesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "Reflect": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Refresh": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "RefreshShade": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "RemapCPlane": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "Remesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "RemoveControlPoint": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "RemoveFromGroup": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "RemoveKnot": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "RemoveMaterial": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "RemoveRenderMesh": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "RemoveSymmetry": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Render": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "RenderAssignMaterialToObjects": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "RenderPreview": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "RenderSettings": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "RenderedViewport": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Rendering": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "ReplaceDetail": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "ReplaceObjectProxy": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "ResetDocumentDefaults": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "ResetMenus": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "RestoreNamedCPlane": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "ReverseNurbs": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Revolve": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "RibbonOffset": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Rotate": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Rotate3D": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "RotateCamera": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "RotateView": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Run": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "RunPythonScript": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "RunScript": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "STLOut": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Save": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "SaveACopy": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "SaveAs": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "SaveIncremental": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "SaveNamedCPlane": {
+      "workflow_category": "visualization",
+      "detail_category": "cplane_management"
+    },
+    "SaveSmall": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "SaveTemplate": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Scale": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Scale1D": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Scale2D": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Scale3D": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "ScaleByPlane": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "ScreenCaptureToClipboard": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "ScreenCaptureToFile": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Section": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "SectionStyle": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "SectionTools": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "SelAll": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelBadObjects": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "SelBlockInstance": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelBox": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelCaptives": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelChain": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelClosedCrv": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelClosedPolysrf": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelClosedSrf": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelColor": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelControlPoint": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelCrossing": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelCrv": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelDim": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelDup": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelEdgeRing": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelLarge": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "SelLast": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelLayer": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelLine": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelMesh": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelNone": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelOpenCrv": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelOpenPolysrf": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelPlanarCrv": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelPolyline": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelPolysrf": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelPrev": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelPt": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelSmall": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelSrf": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelText": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelWindow": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Select": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelectAll": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SelectionFilter": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SendToBack": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "SendToFront": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "Session Ended": {
+      "workflow_category": "data_management",
+      "detail_category": "file_open_close"
+    },
+    "Session Started": {
+      "workflow_category": "data_management",
+      "detail_category": "file_open_close"
+    },
+    "SetActiveLayout": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "SetActiveViewport": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SetCommandPrompt": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "SetCustomLinetype": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "SetDisplayMode": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SetFlythroughAnimation": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SetMaximizedState": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "SetObjectDisplayMode": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SetObjectName": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "SetOneDaySunAnimation": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SetPathAnimation": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SetPerFaceColorByFacePack": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "SetPt": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "SetSun": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "SetUserText": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "SetView": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SetWorkingFolder": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "Shade": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Shear": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "ShortPath": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Show": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "ShowAll": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "ShowCommandPrompt": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "ShowEdges": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "ShowGrid": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "ShowInDetail": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "ShowIsocurves": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ShowLayerDialog": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ShowLayerUI": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "ShowOsnap": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "ShowPointsControlPolygon": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ShowSelected": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "ShowSurfaceDirection": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "ShrinkTrimmedSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "ShrinkWrapMesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "SimplifyCrv": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "Sleep": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "SmartTrack": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Smash": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Smooth": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "SmoothCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "Snap": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "SnapToSubDObject": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "SoftEditCrv": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "SoftEditSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "SoftMove": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "SolidPtOff": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SolidPtOn": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "SpaceMouse": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Sphere": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Spiral": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Splash": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "Split": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "SplitEdge": {
+      "workflow_category": "editing",
+      "detail_category": "curve_editing"
+    },
+    "SplitFace": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Squish": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "SrfPt": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "SrfPtGrid": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "Status": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Stretch": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "SubCrv": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "SubDBox": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDCone": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDCylinder": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDDisplayToggle": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "SubDEllipsoid": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDFromMesh": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "SubDPlane": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDSphere": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDTorus": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDTruncatedCone": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "SubDivide": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "Sun": {
+      "workflow_category": "specialized",
+      "detail_category": "rendering_materials"
+    },
+    "SurfaceAnalysis": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "SwapObjectLayer": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "Sweep1": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "Sweep2": {
+      "workflow_category": "construction",
+      "detail_category": "surface_from_curves_or_points"
+    },
+    "SystemInfo": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "Taper": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "TestBackgroundBitmap": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "TestMaxSpeed": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "TestReselectClippingPlanes": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "TestShowSectionStyleDialog": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "TestToggleObjectSize": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "TestVarsDump": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Tetrahedron": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Text": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "TextFont": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "TextHeight": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "TextObject": {
+      "workflow_category": "analysis",
+      "detail_category": "annotation_documentation"
+    },
+    "Timer": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "ToNURBS": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "ToggleLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "ToggleRenderMesh": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Toolbar": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "ToolbarClose": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "ToolbarDelete": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "ToolbarLock": {
+      "workflow_category": "data_management",
+      "detail_category": "file_import_export"
+    },
+    "ToolbarReset": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "Torus": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Trim": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "TruncatedCone": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "TruncatedPyramid": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "Tube": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "TurnOffSelected": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Turntable": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "TweenCurves": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "TweenSurfaces": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Twist": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "UVEditor": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Undo": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "UndoView": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Ungroup": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "UnifyMeshNormals": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "Units": {
+      "workflow_category": "settings",
+      "detail_category": "settings_environment"
+    },
+    "UnjoinEdge": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "Unlock": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "UnlockLayer": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "UnlockSelected": {
+      "workflow_category": "organization",
+      "detail_category": "selection_manipulation"
+    },
+    "UnrollSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "UnsquishBack": {
+      "workflow_category": "editing",
+      "detail_category": "editing_transformation"
+    },
+    "Untrim": {
+      "workflow_category": "editing",
+      "detail_category": "basic_surface_edit"
+    },
+    "V-Ray": {
+      "workflow_category": "specialized",
+      "detail_category": "special_plugins"
+    },
+    "VRayApplyMaterialToObjects": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayCreateProxyPreview": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayForRhino": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayMaterialEditor": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayOpenLastImage": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayOptions": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayRenderRegion": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRaySetCamera": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayStartRender": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VRayStopRender": {
+      "workflow_category": "specialized",
+      "detail_category": "vray_rendering"
+    },
+    "VariableBlendSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "VariableOffsetSrf": {
+      "workflow_category": "editing",
+      "detail_category": "advanced_surface_edit"
+    },
+    "Vertex": {
+      "workflow_category": "creation",
+      "detail_category": "basic_geometry_creation"
+    },
+    "View Changed": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ViewCaptureToClipboard": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ViewCaptureToFile": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ViewportProperties": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ViewportTabs": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "Volume": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "Welcome": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "WeldMesh": {
+      "workflow_category": "specialized",
+      "detail_category": "mesh_operations"
+    },
+    "What": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "WhatIsNew": {
+      "workflow_category": "analysis",
+      "detail_category": "analysis_measurement"
+    },
+    "WindowClose": {
+      "workflow_category": "settings",
+      "detail_category": "utilities"
+    },
+    "WorksessionDetachModel": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "WorksessionRefreshModel": {
+      "workflow_category": "organization",
+      "detail_category": "layer_organization"
+    },
+    "Zoom": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ZoomIn": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ZoomNaked": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    },
+    "ZoomOut": {
+      "workflow_category": "visualization",
+      "detail_category": "display_view"
+    }
+  }
+}

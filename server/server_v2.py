@@ -14,8 +14,10 @@ LOG_BASE_DIR = "/home/rhinologs"
 
 # Load command classification data
 COMMAND_CLASSIFICATION = None
+DETAIL_CATEGORY_NAMES = None
+
 def load_command_classification():
-    global COMMAND_CLASSIFICATION
+    global COMMAND_CLASSIFICATION, DETAIL_CATEGORY_NAMES
     try:
         # Try multiple possible paths (prioritize local server folder)
         possible_paths = [
@@ -28,10 +30,29 @@ def load_command_classification():
             if os.path.exists(path):
                 with open(path, 'r', encoding='utf-8') as f:
                     COMMAND_CLASSIFICATION = json.load(f)
+                    mapping_count = len(COMMAND_CLASSIFICATION.get('classification_mapping', {}))
                     print(f"✓ Command classification loaded from: {path}")
-                    return
+                    print(f"  Total commands in mapping: {mapping_count}")
+                break
+        else:
+            print("⚠ Warning: Command classification file not found")
 
-        print("⚠ Warning: Command classification file not found")
+        # Load detail category names
+        detail_paths = [
+            os.path.join(os.path.dirname(__file__), 'detail_category_names.json'),
+            '/home/rhinologs/detail_category_names.json',
+            'detail_category_names.json'
+        ]
+
+        for path in detail_paths:
+            if os.path.exists(path):
+                with open(path, 'r', encoding='utf-8') as f:
+                    DETAIL_CATEGORY_NAMES = json.load(f).get('detail_category_names', {})
+                    print(f"✓ Detail category names loaded from: {path}")
+                break
+        else:
+            print("⚠ Warning: Detail category names file not found")
+
     except Exception as e:
         print(f"⚠ Warning: Could not load command classification: {e}")
 
@@ -661,20 +682,18 @@ def get_screening_results(username):
 
 def classify_command(command_name):
     """Classify a Rhino command into workflow and detail categories"""
-    if not COMMAND_CLASSIFICATION or not command_name:
+    if not COMMAND_CLASSIFICATION:
+        print("⚠⚠⚠ COMMAND_CLASSIFICATION is not loaded!")
         return None, None
 
-    # Search in commands mapping
-    commands = COMMAND_CLASSIFICATION.get('commands', {})
-    if command_name in commands:
-        cmd_info = commands[command_name]
-        return cmd_info.get('workflow_category'), cmd_info.get('detail_category')
+    if not command_name:
+        return None, None
 
-    # Search in actions mapping
-    actions = COMMAND_CLASSIFICATION.get('actions', {})
-    if command_name in actions:
-        action_info = actions[command_name]
-        return action_info.get('workflow_category'), action_info.get('detail_category')
+    # Search in classification_mapping
+    mapping = COMMAND_CLASSIFICATION.get('classification_mapping', {})
+    if command_name in mapping:
+        cmd_info = mapping[command_name]
+        return cmd_info.get('workflow_category'), cmd_info.get('detail_category')
 
     return None, None
 
@@ -794,6 +813,12 @@ def get_workflow_stats(username):
                 command_name = detail.split(';')[0].strip()
                 workflow_cat, detail_cat = classify_command(command_name)
 
+                # Debug logging
+                if detail_cat:
+                    print(f"✓ Classified '{command_name}': workflow={workflow_cat}, detail={detail_cat}")
+                else:
+                    print(f"✗ No detail_category for '{command_name}'")
+
                 if workflow_cat:
                     workflow_stats[workflow_cat] += 1
                 if detail_cat:
@@ -813,6 +838,8 @@ def get_workflow_stats(username):
             wf_cats = COMMAND_CLASSIFICATION.get('workflow_categories', {})
             for cat_key, cat_info in wf_cats.items():
                 workflow_names[cat_key] = cat_info.get('name_ja', cat_key)
+
+        print(f"📊 Final stats: workflow_stats={dict(workflow_stats)}, detail_stats={dict(detail_stats)}")
 
         return jsonify({
             'username': username,
@@ -925,6 +952,12 @@ def analyze_action_group(group_actions, start_time):
             command_name = detail.split(';')[0].strip()
             workflow_cat, detail_cat = classify_command(command_name)
 
+            # Debug logging
+            if not detail_cat:
+                print(f"⚠ No classification for command: '{command_name}' (from detail: '{detail}')")
+            else:
+                print(f"✓ Classified '{command_name}': workflow={workflow_cat}, detail={detail_cat}")
+
             # Add categories to action data
             action_dict['WorkflowCategory'] = workflow_cat if workflow_cat else 'Unknown'
             action_dict['DetailCategory'] = detail_cat if detail_cat else 'Unknown'
@@ -945,6 +978,11 @@ def analyze_action_group(group_actions, start_time):
         for cat_key, cat_info in wf_cats.items():
             workflow_names[cat_key] = cat_info.get('name_ja', cat_key)
 
+    # Get detail category names
+    detail_names = {}
+    if DETAIL_CATEGORY_NAMES:
+        detail_names = DETAIL_CATEGORY_NAMES.copy()
+
     # Determine dominant activity
     dominant_workflow = None
     if workflow_counts:
@@ -959,6 +997,7 @@ def analyze_action_group(group_actions, start_time):
         'workflow_categories': dict(workflow_counts),
         'workflow_category_names': workflow_names,
         'detail_categories': dict(detail_counts),
+        'detail_category_names': detail_names,
         'dominant_workflow': workflow_names.get(dominant_workflow, dominant_workflow) if dominant_workflow else 'Unknown',
         'actions': group_actions
     }
@@ -967,6 +1006,22 @@ def analyze_action_group(group_actions, start_time):
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'ok', 'timestamp': datetime.now().isoformat()}), 200
+
+# Debug endpoint to check classification status
+@app.route('/api/debug/classification', methods=['GET'])
+def debug_classification():
+    """Debug endpoint to check if classification data is loaded"""
+    return jsonify({
+        'classification_loaded': COMMAND_CLASSIFICATION is not None,
+        'detail_names_loaded': DETAIL_CATEGORY_NAMES is not None,
+        'total_commands': len(COMMAND_CLASSIFICATION.get('classification_mapping', {})) if COMMAND_CLASSIFICATION else 0,
+        'total_detail_categories': len(DETAIL_CATEGORY_NAMES) if DETAIL_CATEGORY_NAMES else 0,
+        'sample_classifications': {
+            'Box': classify_command('Box'),
+            'Move': classify_command('Move'),
+            'Line': classify_command('Line')
+        }
+    }), 200
 
 if __name__ == '__main__':
     init_db()
