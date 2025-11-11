@@ -412,16 +412,6 @@
                 </div>
 
                 <div class="chart-container full-width">
-                    <h3>Activity Logs Timeline</h3>
-                    <canvas id="activityChart"></canvas>
-                </div>
-
-                <div class="chart-container full-width">
-                    <h3>Workflow Categories Distribution</h3>
-                    <canvas id="workflowChart"></canvas>
-                </div>
-
-                <div class="chart-container full-width">
                     <h3>Detail Categories Breakdown</h3>
                     <canvas id="detailCategoryChart"></canvas>
                 </div>
@@ -650,7 +640,6 @@
             createExperienceChart(rhiExp, ghExp);
             createScoresChart(techScore, selfScore, cadScore);
             createCADToolsChart(userData);
-            createActivityChart(logs);
             createWorkflowCharts(workflowStats);
             createActionGroupsCharts(actionGroupsData);
         }
@@ -816,149 +805,20 @@
             });
         }
 
-        function createActivityChart(logs) {
-            const ctx = document.getElementById('activityChart');
-
-            if (charts.activityChart) {
-                charts.activityChart.destroy();
-            }
-
-            if (logs.length === 0) {
-                ctx.parentElement.innerHTML = '<h3>Activity Logs Timeline</h3><p style="text-align: center; padding: 40px; color: #999;">No activity logs available</p>';
-                return;
-            }
-
-            // Count actions by type
-            const actionCounts = {};
-            logs.forEach(log => {
-                const action = log.action || 'Unknown';
-                actionCounts[action] = (actionCounts[action] || 0) + 1;
-            });
-
-            const labels = Object.keys(actionCounts);
-            const data = Object.values(actionCounts);
-
-            charts.activityChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Action Count',
-                        data: data,
-                        backgroundColor: 'rgba(102, 126, 234, 0.7)',
-                        borderColor: 'rgba(102, 126, 234, 1)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            beginAtZero: true
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-        }
-
         function createWorkflowCharts(workflowStats) {
             if (!workflowStats) {
                 // Hide workflow charts if no data
-                document.getElementById('workflowChart').parentElement.style.display = 'none';
                 document.getElementById('detailCategoryChart').parentElement.style.display = 'none';
                 document.getElementById('workflowTimelineChart').parentElement.style.display = 'none';
                 return;
             }
 
             // Show workflow charts
-            document.getElementById('workflowChart').parentElement.style.display = 'block';
             document.getElementById('detailCategoryChart').parentElement.style.display = 'block';
             document.getElementById('workflowTimelineChart').parentElement.style.display = 'block';
 
-            createWorkflowCategoryChart(workflowStats);
             createDetailCategoryChart(workflowStats);
             createWorkflowTimelineChart(workflowStats);
-        }
-
-        function createWorkflowCategoryChart(workflowStats) {
-            const ctx = document.getElementById('workflowChart');
-
-            if (charts.workflowChart) {
-                charts.workflowChart.destroy();
-            }
-
-            const workflowCounts = workflowStats.workflow_category_counts || {};
-            const workflowNames = workflowStats.workflow_category_names || {};
-
-            if (Object.keys(workflowCounts).length === 0) {
-                ctx.parentElement.innerHTML = '<h3>Workflow Categories Distribution</h3><p style="text-align: center; padding: 40px; color: #999;">No workflow data available</p>';
-                return;
-            }
-
-            // Sort by count descending and get top 10
-            const sorted = Object.entries(workflowCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
-            const labels = sorted.map(([key, _]) => workflowNames[key] || key);
-            const data = sorted.map(([_, count]) => count);
-
-            // Define colors for workflow categories
-            const workflowColors = {
-                'creation': '#FF6B6B',
-                'construction': '#4ECDC4',
-                'extraction': '#45B7D1',
-                'editing': '#FFA07A',
-                'copy_paste': '#98D8C8',
-                'organization': '#FFD93D',
-                'visualization': '#6BCF7F',
-                'analysis': '#A8DADC',
-                'data_management': '#457B9D',
-                'settings': '#E63946',
-                'specialized': '#F4A261'
-            };
-
-            const keys = sorted.map(([key, _]) => key);
-            const colors = keys.map(key => workflowColors[key] || '#95A5A6');
-
-            charts.workflowChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        data: data,
-                        backgroundColor: colors,
-                        borderColor: colors.map(c => c),
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                boxWidth: 15,
-                                font: {
-                                    size: 11
-                                }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.parsed || 0;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(1);
-                                    return `${label}: ${value} (${percentage}%)`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
         }
 
         function createDetailCategoryChart(workflowStats) {
@@ -1022,35 +882,19 @@
                 return;
             }
 
-            const workflowNames = workflowStats.workflow_category_names || {};
-
-            // Count workflow categories in timeline
-            const workflowCounts = {};
+            // Count detail categories in timeline
+            const detailCounts = {};
             timeline.forEach(item => {
-                const cat = item.workflow_category;
-                workflowCounts[cat] = (workflowCounts[cat] || 0) + 1;
+                const cat = item.detail_category;
+                if (cat) {
+                    detailCounts[cat] = (detailCounts[cat] || 0) + 1;
+                }
             });
 
-            const labels = Object.keys(workflowCounts).map(key => workflowNames[key] || key);
-            const data = Object.values(workflowCounts);
-
-            // Define colors
-            const workflowColors = {
-                'creation': '#FF6B6B',
-                'construction': '#4ECDC4',
-                'extraction': '#45B7D1',
-                'editing': '#FFA07A',
-                'copy_paste': '#98D8C8',
-                'organization': '#FFD93D',
-                'visualization': '#6BCF7F',
-                'analysis': '#A8DADC',
-                'data_management': '#457B9D',
-                'settings': '#E63946',
-                'specialized': '#F4A261'
-            };
-
-            const keys = Object.keys(workflowCounts);
-            const colors = keys.map(key => workflowColors[key] || '#95A5A6');
+            // Sort by count descending and get top 15
+            const sorted = Object.entries(detailCounts).sort((a, b) => b[1] - a[1]).slice(0, 15);
+            const labels = sorted.map(([key, _]) => key);
+            const data = sorted.map(([_, count]) => count);
 
             charts.workflowTimelineChart = new Chart(ctx, {
                 type: 'bar',
@@ -1059,14 +903,15 @@
                     datasets: [{
                         label: 'Recent Actions',
                         data: data,
-                        backgroundColor: colors,
-                        borderColor: colors,
+                        backgroundColor: 'rgba(78, 205, 196, 0.7)',
+                        borderColor: 'rgba(78, 205, 196, 1)',
                         borderWidth: 2
                     }]
                 },
                 options: {
+                    indexAxis: 'y',
                     scales: {
-                        y: {
+                        x: {
                             beginAtZero: true
                         }
                     },
@@ -1077,10 +922,10 @@
                         tooltip: {
                             callbacks: {
                                 afterLabel: function(context) {
-                                    const category = keys[context.dataIndex];
+                                    const category = labels[context.dataIndex];
                                     // Find example commands from timeline
                                     const examples = timeline
-                                        .filter(item => item.workflow_category === category)
+                                        .filter(item => item.detail_category === category)
                                         .map(item => item.command)
                                         .filter((v, i, a) => a.indexOf(v) === i)
                                         .slice(0, 3);
