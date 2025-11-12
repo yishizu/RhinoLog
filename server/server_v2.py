@@ -439,13 +439,38 @@ def get_logs():
 
         logs = []
         for row in rows:
-            logs.append({
-                'timestamp': row[0],
-                'username': row[1],
-                'action': row[2],
-                'detail': row[3],
-                'document_name': row[4]
-            })
+            timestamp, username, action, detail, document_name = row
+
+            # Classify command if it's a Command Started action
+            workflow_category = None
+            detail_category = None
+            command_name = None
+
+            if action == 'Command Started' and detail:
+                command_name = detail.split(';')[0].strip()
+                workflow_category, detail_category = classify_command(command_name)
+
+            log_entry = {
+                'timestamp': timestamp,
+                'username': username,
+                'action': action,
+                'detail': detail,
+                'document_name': document_name,
+                'command_name': command_name,
+                'WorkflowCategory': workflow_category,
+                'DetailCategory': detail_category
+            }
+
+            # Add Japanese names if available
+            if workflow_category and COMMAND_CLASSIFICATION:
+                wf_cats = COMMAND_CLASSIFICATION.get('workflow_categories', {})
+                if workflow_category in wf_cats:
+                    log_entry['WorkflowCategoryName'] = wf_cats[workflow_category].get('name_ja', workflow_category)
+
+            if detail_category and DETAIL_CATEGORY_NAMES:
+                log_entry['DetailCategoryName'] = DETAIL_CATEGORY_NAMES.get(detail_category, detail_category)
+
+            logs.append(log_entry)
 
         return jsonify(logs), 200
 
@@ -988,6 +1013,14 @@ def analyze_action_group(group_actions, start_time):
     if workflow_counts:
         dominant_workflow = workflow_counts.most_common(1)[0][0]
 
+    # Debug output
+    print(f"📊 Group analysis complete:")
+    print(f"   Workflow counts: {dict(workflow_counts)}")
+    print(f"   Detail counts: {dict(detail_counts)}")
+    print(f"   Total actions processed: {total_actions}")
+    print(f"   COMMAND_CLASSIFICATION loaded: {COMMAND_CLASSIFICATION is not None}")
+    print(f"   DETAIL_CATEGORY_NAMES loaded: {DETAIL_CATEGORY_NAMES is not None}")
+
     return {
         'start_time': start_time.strftime('%Y-%m-%d %H:%M:%S'),
         'end_time': end_time.strftime('%Y-%m-%d %H:%M:%S'),
@@ -1005,7 +1038,14 @@ def analyze_action_group(group_actions, start_time):
 # ヘルスチェック
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    return jsonify({'status': 'ok', 'timestamp': datetime.now().isoformat()}), 200
+    return jsonify({
+        'status': 'ok',
+        'timestamp': datetime.now().isoformat(),
+        'classification_loaded': COMMAND_CLASSIFICATION is not None,
+        'total_commands': len(COMMAND_CLASSIFICATION.get('classification_mapping', {})) if COMMAND_CLASSIFICATION else 0,
+        'detail_names_loaded': DETAIL_CATEGORY_NAMES is not None,
+        'total_detail_categories': len(DETAIL_CATEGORY_NAMES) if DETAIL_CATEGORY_NAMES else 0
+    }), 200
 
 # Debug endpoint to check classification status
 @app.route('/api/debug/classification', methods=['GET'])

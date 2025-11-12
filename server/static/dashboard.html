@@ -430,6 +430,40 @@
                     <h3>Action Groups Timeline</h3>
                     <div id="actionGroupsTimeline" style="max-height: 400px; overflow-y: auto;"></div>
                 </div>
+
+                <div class="chart-container full-width">
+                    <h3>Recent Actions (Last 100)</h3>
+                    <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <div>
+                            <label style="font-size: 13px; margin-right: 5px;">Filter by Detail Category:</label>
+                            <select id="detailCategoryFilter" style="padding: 5px; border-radius: 4px; border: 1px solid #ddd;">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size: 13px; margin-right: 5px;">Search Command:</label>
+                            <input type="text" id="commandSearchInput" placeholder="Type command name..." style="padding: 5px; border-radius: 4px; border: 1px solid #ddd; width: 200px;">
+                        </div>
+                        <button id="clearFiltersBtn" style="padding: 5px 15px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear Filters</button>
+                    </div>
+                    <div style="max-height: 500px; overflow-y: auto;">
+                        <table id="recentActionsTable" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                            <thead style="position: sticky; top: 0; background: #f8f9fa; z-index: 1;">
+                                <tr>
+                                    <th style="padding: 8px; text-align: left; border-bottom: 2px solid #dee2e6;">Time</th>
+                                    <th style="padding: 8px; text-align: left; border-bottom: 2px solid #dee2e6;">Action</th>
+                                    <th style="padding: 8px; text-align: left; border-bottom: 2px solid #dee2e6;">Command</th>
+                                    <th style="padding: 8px; text-align: left; border-bottom: 2px solid #dee2e6;">Workflow Category</th>
+                                    <th style="padding: 8px; text-align: left; border-bottom: 2px solid #dee2e6;">Detail Category</th>
+                                    <th style="padding: 8px; text-align: left; border-bottom: 2px solid #dee2e6;">Document</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentActionsTableBody">
+                                <tr><td colspan="6" style="padding: 20px; text-align: center; color: #999;">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -636,12 +670,133 @@
                 </div>
             `;
 
-            // Create charts
+            // Create charts and tables
             createExperienceChart(rhiExp, ghExp);
             createScoresChart(techScore, selfScore, cadScore);
             createCADToolsChart(userData);
             createWorkflowCharts(workflowStats);
             createActionGroupsCharts(actionGroupsData);
+            createRecentActionsTable(logs);
+        }
+
+        let allLogs = [];  // Store all logs for filtering
+
+        function createRecentActionsTable(logs) {
+            const tbody = document.getElementById('recentActionsTableBody');
+
+            if (!logs || logs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="padding: 20px; text-align: center; color: #999;">No actions found</td></tr>';
+                return;
+            }
+
+            // Store all logs
+            allLogs = logs.slice(0, 100);
+
+            // Populate detail category filter dropdown
+            populateDetailCategoryFilter(allLogs);
+
+            // Setup filter event listeners
+            setupFilterListeners();
+
+            // Display logs
+            displayFilteredLogs(allLogs);
+        }
+
+        function populateDetailCategoryFilter(logs) {
+            const select = document.getElementById('detailCategoryFilter');
+            const categories = new Set();
+
+            logs.forEach(log => {
+                if (log.DetailCategory) {
+                    categories.add(log.DetailCategory);
+                }
+            });
+
+            // Clear existing options except "All"
+            select.innerHTML = '<option value="">All Categories</option>';
+
+            // Sort and add categories
+            Array.from(categories).sort().forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat;
+                select.appendChild(option);
+            });
+        }
+
+        function setupFilterListeners() {
+            const categoryFilter = document.getElementById('detailCategoryFilter');
+            const searchInput = document.getElementById('commandSearchInput');
+            const clearBtn = document.getElementById('clearFiltersBtn');
+
+            categoryFilter.addEventListener('change', applyFilters);
+            searchInput.addEventListener('input', applyFilters);
+            clearBtn.addEventListener('click', () => {
+                categoryFilter.value = '';
+                searchInput.value = '';
+                applyFilters();
+            });
+        }
+
+        function applyFilters() {
+            const categoryFilter = document.getElementById('detailCategoryFilter').value;
+            const searchTerm = document.getElementById('commandSearchInput').value.toLowerCase();
+
+            let filtered = allLogs;
+
+            // Filter by detail category
+            if (categoryFilter) {
+                filtered = filtered.filter(log => log.DetailCategory === categoryFilter);
+            }
+
+            // Filter by command search
+            if (searchTerm) {
+                filtered = filtered.filter(log => {
+                    const commandName = (log.command_name || '').toLowerCase();
+                    const detail = (log.detail || '').toLowerCase();
+                    return commandName.includes(searchTerm) || detail.includes(searchTerm);
+                });
+            }
+
+            displayFilteredLogs(filtered);
+        }
+
+        function displayFilteredLogs(logs) {
+            const tbody = document.getElementById('recentActionsTableBody');
+            tbody.innerHTML = '';
+
+            if (logs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="padding: 20px; text-align: center; color: #999;">No matching actions found</td></tr>';
+                return;
+            }
+
+            logs.forEach(log => {
+                const row = document.createElement('tr');
+                row.style.borderBottom = '1px solid #eee';
+
+                const workflowCat = log.WorkflowCategoryName || log.WorkflowCategory || '-';
+                const detailCat = log.DetailCategoryName || log.DetailCategory || '-';
+                const commandName = log.command_name || '-';
+
+                // Color coding for categories
+                const workflowColor = log.WorkflowCategory ? '#d1ecf1' : '#f8f9fa';
+                const detailColor = log.DetailCategory ? '#d4edda' : '#f8f9fa';
+
+                row.innerHTML = `
+                    <td style="padding: 8px; white-space: nowrap;">${log.timestamp}</td>
+                    <td style="padding: 8px;">${log.action}</td>
+                    <td style="padding: 8px;">${commandName}</td>
+                    <td style="padding: 8px;">
+                        ${log.WorkflowCategory ? `<span style="background: ${workflowColor}; padding: 3px 6px; border-radius: 3px; font-size: 11px;" title="${log.WorkflowCategory}">${workflowCat}</span>` : '-'}
+                    </td>
+                    <td style="padding: 8px;">
+                        ${log.DetailCategory ? `<span style="background: ${detailColor}; padding: 3px 6px; border-radius: 3px; font-size: 11px;" title="${log.DetailCategory}">${detailCat}</span>` : '-'}
+                    </td>
+                    <td style="padding: 8px; max-width: 200px; overflow: hidden; text-overflow: ellipsis;" title="${log.document_name || ''}">${log.document_name || '-'}</td>
+                `;
+
+                tbody.appendChild(row);
+            });
         }
 
         function createExperienceChart(rhinoExp, ghExp) {
