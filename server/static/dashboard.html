@@ -433,6 +433,9 @@
 
                 <div class="chart-container full-width">
                     <h3>Recent Actions (Last 100)</h3>
+                    <div id="classificationDebugInfo" style="padding: 10px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px; margin-bottom: 10px; font-size: 12px; display: none;">
+                        <strong>⚠ Debug Info:</strong> <span id="debugInfoText"></span>
+                    </div>
                     <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
                         <div>
                             <label style="font-size: 13px; margin-right: 5px;">Filter by Detail Category:</label>
@@ -691,6 +694,25 @@
 
             // Store all logs
             allLogs = logs.slice(0, 100);
+
+            // Check classification status
+            const classified = allLogs.filter(log => log.DetailCategory).length;
+            const commandActions = allLogs.filter(log => log.action === 'Command Started').length;
+
+            console.log('Classification Debug:', {
+                total: allLogs.length,
+                commandActions: commandActions,
+                classified: classified,
+                sampleLogs: allLogs.slice(0, 3)
+            });
+
+            // Show debug info if no classifications found
+            if (commandActions > 0 && classified === 0) {
+                const debugDiv = document.getElementById('classificationDebugInfo');
+                const debugText = document.getElementById('debugInfoText');
+                debugText.textContent = `Found ${commandActions} command actions but 0 classifications. Classification data may not be loaded on server. Check /api/health endpoint.`;
+                debugDiv.style.display = 'block';
+            }
 
             // Populate detail category filter dropdown
             populateDetailCategoryFilter(allLogs);

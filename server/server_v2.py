@@ -33,25 +33,23 @@ def load_command_classification():
                     mapping_count = len(COMMAND_CLASSIFICATION.get('classification_mapping', {}))
                     print(f"✓ Command classification loaded from: {path}")
                     print(f"  Total commands in mapping: {mapping_count}")
+
+                    # Extract detail category names from classification file
+                    DETAIL_CATEGORY_NAMES = {}
+
+                    # Build detail category names from detail_description in commands
+                    mapping = COMMAND_CLASSIFICATION.get('classification_mapping', {})
+                    for cmd_name, cmd_info in mapping.items():
+                        detail_cat = cmd_info.get('detail_category')
+                        detail_desc = cmd_info.get('detail_description')
+                        if detail_cat and detail_desc and detail_cat not in DETAIL_CATEGORY_NAMES:
+                            # Use the description as the Japanese name
+                            DETAIL_CATEGORY_NAMES[detail_cat] = detail_desc
+
+                    print(f"  Extracted {len(DETAIL_CATEGORY_NAMES)} detail category names from classification file")
                 break
         else:
             print("⚠ Warning: Command classification file not found")
-
-        # Load detail category names
-        detail_paths = [
-            os.path.join(os.path.dirname(__file__), 'detail_category_names.json'),
-            '/home/rhinologs/detail_category_names.json',
-            'detail_category_names.json'
-        ]
-
-        for path in detail_paths:
-            if os.path.exists(path):
-                with open(path, 'r', encoding='utf-8') as f:
-                    DETAIL_CATEGORY_NAMES = json.load(f).get('detail_category_names', {})
-                    print(f"✓ Detail category names loaded from: {path}")
-                break
-        else:
-            print("⚠ Warning: Detail category names file not found")
 
     except Exception as e:
         print(f"⚠ Warning: Could not load command classification: {e}")
@@ -1062,6 +1060,56 @@ def debug_classification():
             'Line': classify_command('Line')
         }
     }), 200
+
+# Debug endpoint to check actual log data
+@app.route('/api/debug/sample-logs', methods=['GET'])
+def debug_sample_logs():
+    """Debug endpoint to see actual log data from database"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+
+        # Get 10 "Command Started" logs
+        c.execute('''SELECT timestamp, username, action, detail, document_name
+                     FROM logs
+                     WHERE action = "Command Started"
+                     ORDER BY timestamp DESC
+                     LIMIT 10''')
+        rows = c.fetchall()
+        conn.close()
+
+        sample_logs = []
+        for row in rows:
+            timestamp, username, action, detail, document_name = row
+
+            # Extract command name
+            command_name = detail.split(';')[0].strip() if detail else None
+
+            # Try to classify
+            workflow_cat, detail_cat = classify_command(command_name) if command_name else (None, None)
+
+            sample_logs.append({
+                'timestamp': timestamp,
+                'username': username,
+                'action': action,
+                'detail': detail,
+                'extracted_command': command_name,
+                'workflow_category': workflow_cat,
+                'detail_category': detail_cat,
+                'classification_found': detail_cat is not None
+            })
+
+        return jsonify({
+            'total_samples': len(sample_logs),
+            'samples': sample_logs,
+            'classification_status': {
+                'loaded': COMMAND_CLASSIFICATION is not None,
+                'total_commands': len(COMMAND_CLASSIFICATION.get('classification_mapping', {})) if COMMAND_CLASSIFICATION else 0
+            }
+        }), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     init_db()
