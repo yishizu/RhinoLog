@@ -439,14 +439,19 @@ def get_logs():
         for row in rows:
             timestamp, username, action, detail, document_name = row
 
-            # Classify command if it's a Command Started action
+            # Classify command if it's a Command action or Layer operation
             workflow_category = None
             detail_category = None
             command_name = None
 
-            if action == 'Command Started' and detail:
+            if action == 'Command' and detail:
                 command_name = detail.split(';')[0].strip()
                 workflow_category, detail_category = classify_command(command_name)
+            elif action in ['Layer Created', 'Layer Modified', 'Layer Deleted']:
+                # Classify layer operations as organization/layer_organization
+                workflow_category = 'organization'
+                detail_category = 'layer_organization'
+                command_name = action
 
             log_entry = {
                 'timestamp': timestamp,
@@ -470,7 +475,10 @@ def get_logs():
 
             logs.append(log_entry)
 
-        return jsonify(logs), 200
+        # Filter out auto-generated actions
+        filtered_logs = filter_auto_generated_actions(logs)
+
+        return jsonify(filtered_logs), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -720,6 +728,55 @@ def classify_command(command_name):
 
     return None, None
 
+def filter_auto_generated_actions(logs):
+    """
+    Filter out auto-generated actions that occur immediately after Document Opened.
+    These include Layer Created and Layer Modified actions that happen within 2 seconds of document opening.
+
+    Note: Logs should be in chronological order (oldest first) for accurate filtering.
+    """
+    from datetime import datetime, timedelta
+
+    if not logs:
+        return logs
+
+    filtered_logs = []
+    document_open_time = None
+    filtered_count = 0
+
+    for log in logs:
+        action = log.get('action')
+        timestamp_str = log.get('timestamp')
+
+        # Track when documents are opened
+        if action == 'Document Opened':
+            try:
+                document_open_time = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+            except:
+                document_open_time = None
+            filtered_logs.append(log)
+            continue
+
+        # Filter Layer actions that happen within 2 seconds of document opening
+        if document_open_time and action in ['Layer Created', 'Layer Modified']:
+            try:
+                current_time = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+                time_diff = (current_time - document_open_time).total_seconds()
+
+                # Skip layer actions within 2 seconds of document opening
+                if time_diff <= 2:
+                    filtered_count += 1
+                    continue
+            except:
+                pass
+
+        filtered_logs.append(log)
+
+    if filtered_count > 0:
+        print(f"🧹 Filtered out {filtered_count} auto-generated layer actions")
+
+    return filtered_logs
+
 # 分類済みログ取得（可視化アプリ用）
 @app.route('/api/logs/classified', methods=['GET'])
 def get_logs_classified():
@@ -763,7 +820,7 @@ def get_logs_classified():
 
             # Extract command name from detail
             command_name = None
-            if action == 'Command Started' and detail:
+            if action == 'Command' and detail:
                 command_name = detail.split(';')[0].strip()
 
             # Classify command
@@ -832,7 +889,7 @@ def get_workflow_stats(username):
         timeline = []
 
         for timestamp, action, detail in rows:
-            if action == 'Command Started' and detail:
+            if action == 'Command' and detail:
                 command_name = detail.split(';')[0].strip()
                 workflow_cat, detail_cat = classify_command(command_name)
 
@@ -893,13 +950,30 @@ def get_action_groups(username):
         if not rows:
             return jsonify({'error': 'No logs found for user'}), 404
 
+        # Convert rows to log dictionaries for filtering
+        all_logs = []
+        for timestamp_str, action, detail, document_name in rows:
+            all_logs.append({
+                'timestamp': timestamp_str,
+                'action': action,
+                'detail': detail,
+                'document_name': document_name
+            })
+
+        # Filter out auto-generated actions
+        filtered_logs = filter_auto_generated_actions(all_logs)
+
         # Group actions into 10-minute intervals
         groups = []
         current_group = []
         group_start_time = None
         idle_threshold_minutes = 10
 
-        for timestamp_str, action, detail, document_name in rows:
+        for log in filtered_logs:
+            timestamp_str = log['timestamp']
+            action = log['action']
+            detail = log.get('detail', '')
+            document_name = log.get('document_name', '')
             try:
                 timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
             except:
@@ -970,8 +1044,8 @@ def analyze_action_group(group_actions, start_time):
         action = action_dict['action']
         detail = action_dict.get('detail', '')
 
-        # Classify command
-        if action == 'Command Started' and detail:
+        # Classify command or layer operation
+        if action == 'Command' and detail:
             command_name = detail.split(';')[0].strip()
             workflow_cat, detail_cat = classify_command(command_name)
 
@@ -989,8 +1063,18 @@ def analyze_action_group(group_actions, start_time):
                 workflow_counts[workflow_cat] += 1
             if detail_cat:
                 detail_counts[detail_cat] += 1
+        elif action in ['Layer Created', 'Layer Modified', 'Layer Deleted']:
+            # Classify layer operations as organization/layer_organization
+            workflow_cat = 'organization'
+            detail_cat = 'layer_organization'
+
+            action_dict['WorkflowCategory'] = workflow_cat
+            action_dict['DetailCategory'] = detail_cat
+
+            workflow_counts[workflow_cat] += 1
+            detail_counts[detail_cat] += 1
         else:
-            # For non-command actions, set as Unknown
+            # For other non-command actions, set as Unknown
             action_dict['WorkflowCategory'] = 'Unknown'
             action_dict['DetailCategory'] = 'Unknown'
 
@@ -1069,26 +1153,56 @@ def debug_sample_logs():
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
 
-        # Get 10 "Command Started" logs
+        # First, check what action types exist
+        c.execute('''SELECT DISTINCT action FROM logs LIMIT 20''')
+        action_types = [row[0] for row in c.fetchall()]
+
+        # Get total log count
+        c.execute('''SELECT COUNT(*) FROM logs''')
+        total_logs = c.fetchone()[0]
+
+        # Get 10 recent logs regardless of action type
         c.execute('''SELECT timestamp, username, action, detail, document_name
                      FROM logs
-                     WHERE action = "Command Started"
                      ORDER BY timestamp DESC
                      LIMIT 10''')
-        rows = c.fetchall()
+        all_rows = c.fetchall()
+
+        # Get 10 "Command" logs
+        c.execute('''SELECT timestamp, username, action, detail, document_name
+                     FROM logs
+                     WHERE action = "Command"
+                     ORDER BY timestamp DESC
+                     LIMIT 10''')
+        command_rows = c.fetchall()
+
         conn.close()
 
-        sample_logs = []
-        for row in rows:
+        # Process all logs
+        all_samples = []
+        for row in all_rows:
             timestamp, username, action, detail, document_name = row
-
-            # Extract command name
             command_name = detail.split(';')[0].strip() if detail else None
+            workflow_cat, detail_cat = classify_command(command_name) if command_name and action == 'Command' else (None, None)
 
-            # Try to classify
+            all_samples.append({
+                'timestamp': timestamp,
+                'username': username,
+                'action': action,
+                'detail': detail,
+                'extracted_command': command_name,
+                'workflow_category': workflow_cat,
+                'detail_category': detail_cat
+            })
+
+        # Process command logs
+        command_samples = []
+        for row in command_rows:
+            timestamp, username, action, detail, document_name = row
+            command_name = detail.split(';')[0].strip() if detail else None
             workflow_cat, detail_cat = classify_command(command_name) if command_name else (None, None)
 
-            sample_logs.append({
+            command_samples.append({
                 'timestamp': timestamp,
                 'username': username,
                 'action': action,
@@ -1100,8 +1214,18 @@ def debug_sample_logs():
             })
 
         return jsonify({
-            'total_samples': len(sample_logs),
-            'samples': sample_logs,
+            'database_info': {
+                'total_logs': total_logs,
+                'action_types_found': action_types
+            },
+            'all_samples': {
+                'count': len(all_samples),
+                'data': all_samples
+            },
+            'command_samples': {
+                'count': len(command_samples),
+                'data': command_samples
+            },
             'classification_status': {
                 'loaded': COMMAND_CLASSIFICATION is not None,
                 'total_commands': len(COMMAND_CLASSIFICATION.get('classification_mapping', {})) if COMMAND_CLASSIFICATION else 0

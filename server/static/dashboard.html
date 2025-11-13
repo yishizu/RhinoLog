@@ -697,7 +697,7 @@
 
             // Check classification status
             const classified = allLogs.filter(log => log.DetailCategory).length;
-            const commandActions = allLogs.filter(log => log.action === 'Command Started').length;
+            const commandActions = allLogs.filter(log => log.action === 'Command').length;
 
             console.log('Classification Debug:', {
                 total: allLogs.length,
