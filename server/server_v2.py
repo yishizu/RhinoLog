@@ -43,8 +43,11 @@ def load_command_classification():
                         detail_cat = cmd_info.get('detail_category')
                         detail_desc = cmd_info.get('detail_description')
                         if detail_cat and detail_desc and detail_cat not in DETAIL_CATEGORY_NAMES:
-                            # Use the description as the Japanese name
-                            DETAIL_CATEGORY_NAMES[detail_cat] = detail_desc
+                            # Remove parentheses and their contents from description
+                            import re
+                            cleaned_desc = re.sub(r'[（(].*?[）)]', '', detail_desc).strip()
+                            # Use the cleaned description as the Japanese name
+                            DETAIL_CATEGORY_NAMES[detail_cat] = cleaned_desc
 
                     print(f"  Extracted {len(DETAIL_CATEGORY_NAMES)} detail category names from classification file")
                 break
@@ -451,6 +454,11 @@ def get_logs():
                 # Classify layer operations as organization/layer_organization
                 workflow_category = 'organization'
                 detail_category = 'layer_organization'
+                command_name = action
+            elif action in ['Document Opened', 'Document Closed']:
+                # Classify document operations as data_management/file_open_close
+                workflow_category = 'data_management'
+                detail_category = 'file_open_close'
                 command_name = action
 
             log_entry = {
@@ -1067,6 +1075,16 @@ def analyze_action_group(group_actions, start_time):
             # Classify layer operations as organization/layer_organization
             workflow_cat = 'organization'
             detail_cat = 'layer_organization'
+
+            action_dict['WorkflowCategory'] = workflow_cat
+            action_dict['DetailCategory'] = detail_cat
+
+            workflow_counts[workflow_cat] += 1
+            detail_counts[detail_cat] += 1
+        elif action in ['Document Opened', 'Document Closed']:
+            # Classify document operations as data_management/file_open_close
+            workflow_cat = 'data_management'
+            detail_cat = 'file_open_close'
 
             action_dict['WorkflowCategory'] = workflow_cat
             action_dict['DetailCategory'] = detail_cat
